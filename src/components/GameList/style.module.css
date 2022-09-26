@@ -1,0 +1,14 @@
+.outerGrid{
+    width: 100%;
+}
+.gameList{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+@media (max-width: 600px){
+    .gameList{
+        gap: 16px;
+    }
+}

@@ -1,0 +1,23 @@
+:root{
+   --color-blue: #4B60BB;
+   --color-darkblue: #0D1F4B;
+   --color-lightblue: #6E9FD3;
+   --color-white: #FBFEFF;
+}
+
+body{
+   background: var(--color-darkblue);
+}
+
+.container{
+   width: 100%;
+   max-width: 1024px;
+   margin: 0 auto;
+   padding: 1rem;
+}
+.container.small{
+   max-width: 800px;
+}
+.container.large{
+   max-width: 1200px;
+}

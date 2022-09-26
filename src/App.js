@@ -2,6 +2,8 @@
 import { useState } from "react";
 import AddGameForm from "./components/AddGameForm";
 import GameList from "./components/GameList";
+import './styles/index.css'
+import gridStyle from "./styles/modules/grid.module.css"
 
 function App() {
   const [gameList, setGameList] = useState([
@@ -23,10 +25,8 @@ function App() {
     },
   ]);
 
-  const [filter, setFilter] = useState(""); //Qual filtro está selecionado no momento
+  const [filter, setFilter] = useState(""); 
 
-  //Constante que produz uma nova lista com base no filtro selecionado
-  //Se não houver filtro, espelha a gameList
   const newGameList = gameList.filter((game) =>
     filter === "" ? true : game.category === filter
   );
@@ -41,7 +41,6 @@ function App() {
   ];
 
   function addGame(formData) {
-    //Método find para ver se o item já está cadastrado na lista
     if (
       !gameList.find(
         (game) => game.name.toLowerCase() === formData.name.toLowerCase()
@@ -49,16 +48,13 @@ function App() {
     ) {
       setGameList([...gameList, formData]);
     } else {
-      //Alerta em caso de erro
       alert("Este jogo já está cadastrado na lista.");
     }
   }
 
   function removeGame(clickedGame) {
-    //Filtro retornando todos os itens, exceto o item clicado
     const newGameList = gameList.filter((game) => game !== clickedGame);
 
-    //Metodo confirm para criar um alerta de confirmação
     if (confirm("Deseja excluir mesmo este item?")) {
       setGameList(newGameList);
     }
@@ -66,14 +62,20 @@ function App() {
 
   return (
     <div className="App">
-      {filter}
-      <GameList
-        gameList={newGameList}
-        removeGame={removeGame}
-        categories={categories}
-        setFilter={setFilter}
-      />
+      <div className="container large">
+      <div className={gridStyle.mainContainer}>
+        <GameList
+          gameList={newGameList}
+          removeGame={removeGame}
+          categories={categories}
+          filter={filter}
+          setFilter={setFilter}
+        />
       <AddGameForm categories={categories} addGame={addGame} />
+      </div>
+      
+      </div>
+      
     </div>
   );
 }

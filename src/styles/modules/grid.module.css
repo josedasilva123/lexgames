@@ -1,0 +1,9 @@
+.mainContainer{
+    display: flex;
+    gap: 4rem;
+}
+@media (max-width: 800px){
+    .mainContainer{
+        flex-direction: column-reverse;
+    }    
+}

@@ -1,0 +1,19 @@
+.categoryList{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.categoryList li{
+    white-space: nowrap;
+}
+
+@media (max-width: 800px){
+    .categoryList{
+        flex-wrap: unset;
+        overflow-x: scroll;
+        padding-bottom: 8px;
+        margin-right: -16px;
+    }
+}

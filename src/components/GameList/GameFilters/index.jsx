@@ -1,11 +1,12 @@
 import React from "react";
+import styles from "./style.module.css";
 
-const GameFilters = ({ categories, setFilter }) => {
+const GameFilters = ({ categories, filter, setFilter }) => {
   return (
-    <div>
-      <button onClick={() => setFilter("")}>Todos</button>
+    <div className={styles.categoryList}>
+      <button className={`btn ${filter === "" ? "solid1" : "outline"} default`} onClick={() => setFilter("")}>Todos</button>
       {categories.map((category) => (
-        <button key={category} onClick={() => setFilter(category)}>
+        <button className={`btn ${filter === category ? "solid1" : "outline"} default`} key={category} onClick={() => setFilter(category)}>
           {category}
         </button>
       ))}

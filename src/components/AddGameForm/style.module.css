@@ -1,0 +1,8 @@
+.formBox{
+    min-width: 300px;
+}
+@media (max-width: 800px){
+    .formBox{
+        min-width: unset;
+    }
+}
