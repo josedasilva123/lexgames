@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import AddGameForm from "./components/AddGameForm";
 import GameList from "./components/GameList";
 import "./styles/index.css";

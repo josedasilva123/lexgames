@@ -1,4 +1,5 @@
 import React from 'react'
+import { StyledTitle } from '../../styles/typography';
 import GameCard from './GameCard'
 import GameFilters from './GameFilters'
 import styles from "./style.module.css";
@@ -14,9 +15,9 @@ const GameList = ({ gameList, removeGame, categories, filter, setFilter }) => {
             ))}
             </ul>
         ) : (
-            <h1>
-                Não foi cadastrado nenhum jogo nesta lista.
-            </h1>
+            <StyledTitle fontSize="one">
+                Não foi encontrado nenhum jogo.
+            </StyledTitle>
         )}        
     </div>
     

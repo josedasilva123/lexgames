@@ -1,17 +1,20 @@
 import React from "react";
-import styles from "./style.module.css";
+import { StyledTitle } from "../../../styles/typography";
+import { StyledGameCard } from "./style";
 
 const GameCard = ({ game, removeGame }) => {
   return (
-    <li className={styles.gameCard}>
+    <StyledGameCard>
       <div>
         <span className="paragraph">{game.category}</span>
-        <h3 className="title two">{game.name}</h3>
+        <StyledTitle tag="h3" fontSize="two">
+          {game.name}
+        </StyledTitle>
       </div>
       <button className="btn solid2 default" onClick={() => removeGame(game)}>
         Remover
       </button>
-    </li>
+    </StyledGameCard>
   );
 };
 
