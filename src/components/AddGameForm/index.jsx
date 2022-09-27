@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { StyledButton } from "../../styles/button";
 import { StyledForm } from "../../styles/form";
+import { StyledFormBox } from "./style";
 
 const AddGameForm = ({ categories, addGame }) => {
   const [formData, setFormData] = useState({
@@ -22,7 +23,7 @@ const AddGameForm = ({ categories, addGame }) => {
   }
 
   return (
-    <div className={styles.formBox}>
+    <StyledFormBox>
       <StyledForm onSubmit={onSubmit}>
         <input
           type="text"
@@ -48,7 +49,7 @@ const AddGameForm = ({ categories, addGame }) => {
           Enviar
         </StyledButton>
       </StyledForm>
-    </div>
+    </StyledFormBox>
   );
 };
 
