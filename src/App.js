@@ -2,8 +2,7 @@
 import { useState } from "react";
 import AddGameForm from "./components/AddGameForm";
 import GameList from "./components/GameList";
-import "./styles/index.css";
-import gridStyle from "./styles/modules/grid.module.css";
+import { StyledContainer } from "./styles/global";
 
 function App() {
   const [gameList, setGameList] = useState([
@@ -69,8 +68,8 @@ function App() {
 
   return (
     <div className="App">
-      <div className="container large">
-        <div className={gridStyle.mainContainer}>
+      <StyledContainer containerSize="large">
+        <div className="mainContainer">
           <GameList
             gameList={newGameList}
             removeGame={removeGame}
@@ -80,7 +79,7 @@ function App() {
           />
           <AddGameForm categories={categories} addGame={addGame} />
         </div>
-      </div>
+      </StyledContainer>
     </div>
   );
 }

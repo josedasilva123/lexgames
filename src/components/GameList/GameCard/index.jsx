@@ -1,19 +1,19 @@
 import React from "react";
-import { StyledTitle } from "../../../styles/typography";
+import { StyledButton } from "../../../styles/button";
+import { StyledParagraph, StyledTitle } from "../../../styles/typography";
 import { StyledGameCard } from "./style";
 
 const GameCard = ({ game, removeGame }) => {
   return (
     <StyledGameCard>
       <div>
-        <span className="paragraph">{game.category}</span>
+        <StyledParagraph>{game.category}</StyledParagraph>
+       
         <StyledTitle tag="h3" fontSize="two">
           {game.name}
         </StyledTitle>
       </div>
-      <button className="btn solid2 default" onClick={() => removeGame(game)}>
-        Remover
-      </button>
+      <StyledButton buttonStyle="solid2" onClick={() => removeGame(game)}>Remover</StyledButton>
     </StyledGameCard>
   );
 };

@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import styled, { css, createGlobalStyle } from "styled-components";
 
 //O Global style é uma ótima opção para reset
 export const GlobalStyle = createGlobalStyle`
@@ -42,4 +42,37 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
     color: var(--color-white);
 }
+`;
+
+export const StyledContainer = styled.div`
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+
+  ${({ containerSize }) => {
+    switch (containerSize) {
+      case "small":
+        return css`
+          max-width: 800px;
+        `;
+      case "large":
+        return css`
+          max-width: 1200px;
+        `;
+      default:
+        return css`
+          max-width: 1024px;
+        `;
+    }
+  }}
+
+  .mainContainer {
+    display: flex;
+    gap: 4rem;
+  }
+  @media (max-width: 800px) {
+    .mainContainer {
+      flex-direction: column-reverse;
+    }
+  }
 `;

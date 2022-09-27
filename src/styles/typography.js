@@ -22,67 +22,39 @@ export const StyledTitle = styled(BaseTitle)`
 
     /* Regra condicional com props, o CSS se altera com base no valor da prop */
     ${({fontSize}) => {
-        if(fontSize === "one"){
-            return css`
+        switch (fontSize){
+            case "one":
+                return css`
                 font-size: 40px;
 
                 @media (max-width: 800px){
                     font-size: 30px;
                 }
             `
-        } else if (fontSize === "two"){
-            return css`
-                font-size: 34px;
 
-                @media (max-width: 800px){
-                    font-size: 26px;
-                }   
-            `
-        } else if (fontSize === "three"){
-            return css`
-                font-size: 28px;
+            case "two": 
+                return css`
+                    font-size: 34px;
 
-                @media (max-width: 800px){
-                    font-size: 22px;
-                }   
-            `
+                    @media (max-width: 800px){
+                        font-size: 26px;
+                    }   
+                `
+            
+            case "three": 
+                return css`
+                    font-size: 34px;
+
+                    @media (max-width: 800px){
+                        font-size: 26px;
+                    }   
+                `
         }
     }}
 
 `
 
-/*
-.title{
-    font-weight: 700;
-}
-
-.title.one{
-    font-size: 40px;
-}
-
-.title.two{
-    font-size: 34px;
-}
-
-.title.three{
-    font-size: 28px;
-}
-
-@media (max-width: 800px){
-    .title.one{
-        font-size: 30px;
-    }
-    .title.two{
-        font-size: 26px;
-    }
-    .title.three{
-        font-size: 22px;
-    }
-}
-
-.paragraph{
+export const StyledParagraph = styled.p`
     font-weight: 400;
     font-size: 16px;
-}
-
-*/
+`

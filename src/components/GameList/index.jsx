@@ -2,24 +2,24 @@ import React from 'react'
 import { StyledTitle } from '../../styles/typography';
 import GameCard from './GameCard'
 import GameFilters from './GameFilters'
-import styles from "./style.module.css";
+import { StyledGameList, StyledGrid } from './style';
 
 const GameList = ({ gameList, removeGame, categories, filter, setFilter }) => {
   return (
-    <div className={styles.outerGrid}>
+    <StyledGrid>
         <GameFilters categories={categories} filter={filter} setFilter={setFilter} />
         {gameList.length ? (
-            <ul className={styles.gameList}>
-            {gameList.map((game, index) => (
+            <StyledGameList>
+                 {gameList.map((game, index) => (
                 <GameCard key={index} game={game} removeGame={removeGame} />
-            ))}
-            </ul>
+            ))} 
+            </StyledGameList>
         ) : (
             <StyledTitle fontSize="one">
                 Não foi encontrado nenhum jogo.
             </StyledTitle>
         )}        
-    </div>
+    </StyledGrid>
     
   )
 }
