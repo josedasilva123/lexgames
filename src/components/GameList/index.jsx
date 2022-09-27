@@ -17,8 +17,7 @@ const GameList = ({ gameList, removeGame, categories, filter, setFilter }) => {
             <h1>
                 Não foi cadastrado nenhum jogo nesta lista.
             </h1>
-        )}
-        
+        )}        
     </div>
     
   )

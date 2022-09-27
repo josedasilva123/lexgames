@@ -1,9 +1,9 @@
 /* eslint-disable no-restricted-globals */
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import AddGameForm from "./components/AddGameForm";
 import GameList from "./components/GameList";
-import './styles/index.css'
-import gridStyle from "./styles/modules/grid.module.css"
+import "./styles/index.css";
+import gridStyle from "./styles/modules/grid.module.css";
 
 function App() {
   const [gameList, setGameList] = useState([
@@ -23,9 +23,13 @@ function App() {
       name: "Valorant",
       category: "FPS",
     },
+    {
+      name: "Genshin Impact",
+      category: "RPG",
+    }
   ]);
 
-  const [filter, setFilter] = useState(""); 
+  const [filter, setFilter] = useState("");
 
   const newGameList = gameList.filter((game) =>
     filter === "" ? true : game.category === filter
@@ -38,6 +42,9 @@ function App() {
     "Survive",
     "Soulslike",
     "Plataform",
+    "Adventure",
+    "Indie",
+    "MMO"
   ];
 
   function addGame(formData) {
@@ -63,19 +70,17 @@ function App() {
   return (
     <div className="App">
       <div className="container large">
-      <div className={gridStyle.mainContainer}>
-        <GameList
-          gameList={newGameList}
-          removeGame={removeGame}
-          categories={categories}
-          filter={filter}
-          setFilter={setFilter}
-        />
-      <AddGameForm categories={categories} addGame={addGame} />
+        <div className={gridStyle.mainContainer}>
+          <GameList
+            gameList={newGameList}
+            removeGame={removeGame}
+            categories={categories}
+            filter={filter}
+            setFilter={setFilter}
+          />
+          <AddGameForm categories={categories} addGame={addGame} />
+        </div>
       </div>
-      
-      </div>
-      
     </div>
   );
 }

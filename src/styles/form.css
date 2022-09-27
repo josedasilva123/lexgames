@@ -20,9 +20,11 @@
 
     color: var(--color-white);
 }
+
 .form select option{
     background: var(--color-darkblue);
 }
+
 .form input::placeholder{
     color: rgba(255,255,255, .5);
 }
