@@ -1,10 +1,10 @@
 import React from "react";
 import { StyledButton } from "../../../styles/button";
-import styles from "./style.module.css";
+import { StyledGameFilters } from "./style";
 
 const GameFilters = ({ categories, filter, setFilter }) => {
   return (
-    <div className={styles.categoryList}>
+    <StyledGameFilters>
       <StyledButton buttonStyle={(filter === "" ? "solid1" : "outline")} onClick={() => setFilter("")}>Todos</StyledButton>
      
       {categories.map((category) => (
@@ -12,7 +12,7 @@ const GameFilters = ({ categories, filter, setFilter }) => {
           {category}
         </StyledButton>
       ))}
-    </div>
+    </StyledGameFilters>
   );
 };
 
