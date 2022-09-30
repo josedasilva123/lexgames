@@ -7,10 +7,10 @@ const GameCard = ({ game, removeGame }) => {
   return (
     <StyledGameCard>
       <div>
-        <StyledParagraph>{game.category}</StyledParagraph>
+        <StyledParagraph>{game.genre}</StyledParagraph>
        
         <StyledTitle tag="h3" fontSize="two">
-          {game.name}
+          {game.title}
         </StyledTitle>
       </div>
       <StyledButton buttonStyle="solid2" onClick={() => removeGame(game)}>Remover</StyledButton>

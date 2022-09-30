@@ -1,30 +1,18 @@
-import React from "react";
-import { StyledTitle } from "../../styles/typography";
-import GameCard from "./GameCard";
-import GameFilters from "./GameFilters";
-import { StyledGameList, StyledGrid } from "./style";
+import React from 'react'
 
-const GameList = ({ gameList, removeGame, categories, filter, setFilter }) => {
+const GameList = ({gameList, addGame}) => {
   return (
-    <StyledGrid>
-      <GameFilters
-        categories={categories}
-        filter={filter}
-        setFilter={setFilter}
-      />
-      {gameList.length ? (
-        <StyledGameList>
-          {gameList.map((game, index) => (
-            <GameCard key={index} game={game} removeGame={removeGame} />
-          ))}
-        </StyledGameList>
-      ) : (
-        <StyledTitle tag="h1" fontSize="one">
-          Não foi encontrado nenhum jogo.
-        </StyledTitle>
-      )}
-    </StyledGrid>
-  );
-};
+    <ul>
+        {gameList.map(game => (
+           <li key={game.id}>
+                <img src={game.thumbnail} alt={game.title} />
+                <h3>{game.title}</h3>
+                <p>{game.short_description}</p>
+                <button onClick={() => addGame(game)}>Adicionar</button>
+           </li> 
+        ))}
+    </ul>
+  )
+}
 
-export default GameList;
+export default GameList
