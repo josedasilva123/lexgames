@@ -12,7 +12,17 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [gameList, setGameList] = useState(gameData);
   const [favoriteList, setFavoriteList] = useState([]);
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState(""); 
+
+  const [currentPath, setCurrentPath] = useState('');
+
+  useEffect(() => {
+    setCurrentPath(window.location.pathname)
+  }, [])
+
+  useEffect(() => {
+    window.history.pushState("","", currentPath);
+  }, [currentPath])
 
   /* pegando categorias da api e filtrando e removendo itens repetidos */
   const categories = gameList.map((game) => game.genre);
@@ -76,8 +86,7 @@ function App() {
     }
   }
 
-  function ratingGame(gameId, rating){
-    
+  function ratingGame(gameId, rating){    
     const newFavoriteList = favoriteList.map(game => {
       if(game.id === gameId){
         return { ...game, rating: rating}
@@ -90,10 +99,18 @@ function App() {
 
   return (
     <div className="App">
+      <button onClick={() => setCurrentPath('/home')}>
+        Home
+      </button>
+      <button onClick={() => setCurrentPath('/contato')}>
+        Contato
+      </button>
       {loading ? (
         <h1>Carregando</h1>
       ) : (
-        <StyledContainer containerSize="large">
+        <>
+        {currentPath === "/home" && (
+          <StyledContainer containerSize="large">
           <div className="mainContainer">
             <FavoriteList
               gameList={newFavoriteList}              
@@ -106,6 +123,11 @@ function App() {
             <GameList gameList={gameList} addGame={addGame} />
           </div>
         </StyledContainer>
+        )}
+        {currentPath === "/contato" && <h1 style={{ color: "#FFF"}}>Contato</h1>}
+        </>
+        
+        
       )}
     </div>
   );
