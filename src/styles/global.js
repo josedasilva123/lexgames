@@ -68,11 +68,7 @@ export const StyledContainer = styled.div`
 
   .mainContainer {
     display: flex;
+    flex-direction: column;
     gap: 4rem;
-  }
-  @media (max-width: 800px) {
-    .mainContainer {
-      flex-direction: column-reverse;
-    }
   }
 `;

@@ -4,7 +4,7 @@ export const StyledGrid = styled.div`
   width: 100%;  
 `
 
-export const StyledGameList = styled.ul`
+export const StyledFavoriteList = styled.ul`
     width: 100%;
     display: flex;
     flex-direction: column;

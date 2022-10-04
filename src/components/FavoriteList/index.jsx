@@ -1,10 +1,10 @@
 import React from "react";
 import { StyledTitle } from "../../styles/typography";
-import GameCard from "./GameCard";
+import FavoriteCard from "./FavoriteCard";
 import GameFilters from "./GameFilters";
-import { StyledGameList, StyledGrid } from "./style";
+import { StyledFavoriteList, StyledGrid } from "./style";
 
-const FavoriteList = ({ gameList, removeGame, categories, filter, setFilter }) => {
+const FavoriteList = ({ gameList, removeGame, ratingGame, categories, filter, setFilter }) => {
   return (
     <StyledGrid>
       <GameFilters
@@ -13,11 +13,11 @@ const FavoriteList = ({ gameList, removeGame, categories, filter, setFilter }) =
         setFilter={setFilter}
       />
       {gameList.length ? (
-        <StyledGameList>
+        <StyledFavoriteList>
           {gameList.map((game, index) => (
-            <GameCard key={index} game={game} removeGame={removeGame} />
+            <FavoriteCard key={index} game={game} removeGame={removeGame} ratingGame={ratingGame} />
           ))}
-        </StyledGameList>
+        </StyledFavoriteList>
       ) : (
         <StyledTitle tag="h1" fontSize="one">
           Não foi encontrado nenhum jogo.

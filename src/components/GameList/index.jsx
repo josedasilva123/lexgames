@@ -1,18 +1,16 @@
-import React from 'react'
+import React from "react";
+import { StyledButton } from "../../styles/button";
+import GameCard from "./GameCard";
+import { StyledGameList } from "./style";
 
-const GameList = ({gameList, addGame}) => {
+const GameList = ({ gameList, addGame }) => {
   return (
-    <ul>
-        {gameList.map(game => (
-           <li key={game.id}>
-                <img src={game.thumbnail} alt={game.title} />
-                <h3>{game.title}</h3>
-                <p>{game.short_description}</p>
-                <button onClick={() => addGame(game)}>Adicionar</button>
-           </li> 
-        ))}
-    </ul>
-  )
-}
+    <StyledGameList>
+      {gameList.map((game) => (
+        <GameCard key={game.id} game={game} addGame={addGame} />
+      ))}
+    </StyledGameList>
+  );
+};
 
-export default GameList
+export default GameList;

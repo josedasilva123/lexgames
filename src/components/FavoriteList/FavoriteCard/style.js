@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 //Estilos menos dinâmicos também podem ser comtemplados no 
 
-export const StyledGameCard = styled.li`
+export const StyledFavoriteCard = styled.li`
     display: flex;
     align-items: center;
     justify-content: space-between;    

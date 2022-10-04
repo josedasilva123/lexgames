@@ -14,9 +14,9 @@ function App() {
   const [favoriteList, setFavoriteList] = useState([]);
   const [filter, setFilter] = useState("");
 
-   /* pegando categorias da api e filtrando e removendo itens repetidos */
-  const categories = gameList.map((game) => game.genre); 
-  const newCategories = [...new Set(categories)]; 
+  /* pegando categorias da api e filtrando e removendo itens repetidos */
+  const categories = gameList.map((game) => game.genre);
+  const newCategories = [...new Set(categories)];
 
   const newFavoriteList = favoriteList.filter((game) =>
     filter === "" ? true : game.genre === filter
@@ -29,10 +29,11 @@ function App() {
       try {
         setLoading(true);
         const response = await api.get("games");
+        response.data.length = 24;
         setGameList(response.data);
       } catch (error) {
         console.log(error);
-      /* finally é sempre executado independente de qualquer cenário */
+        /* finally é sempre executado independente de qualquer cenário */
       } finally {
         setLoading(false);
       }
@@ -48,7 +49,6 @@ function App() {
     }
   }, []);
 
-
   /* Efeito que carrega armazena a lista de favoritos no localStorage a cada atualização */
   useEffect(() => {
     if (favoriteList.length) {
@@ -56,14 +56,9 @@ function App() {
     }
   }, [favoriteList]);
 
-  
-  function addGame(productData) {
-    if (
-      !favoriteList.find(
-        (game) => game.title.toLowerCase() === productData.title.toLowerCase()
-      )
-    ) {
-      setFavoriteList([...favoriteList, productData]);
+  function addGame(gameData) {
+    if (!favoriteList.find((game) => game.id === gameData.id)) {
+      setFavoriteList([...favoriteList, gameData]);
     } else {
       alert("Este jogo já está cadastrado na lista.");
     }
@@ -81,6 +76,18 @@ function App() {
     }
   }
 
+  function ratingGame(gameId, rating){
+    
+    const newFavoriteList = favoriteList.map(game => {
+      if(game.id === gameId){
+        return { ...game, rating: rating}
+      } else {
+        return game;
+      }
+    })
+    setFavoriteList(newFavoriteList);
+  }
+
   return (
     <div className="App">
       {loading ? (
@@ -88,14 +95,15 @@ function App() {
       ) : (
         <StyledContainer containerSize="large">
           <div className="mainContainer">
-            <GameList gameList={gameList} addGame={addGame} />
             <FavoriteList
-              gameList={newFavoriteList}
+              gameList={newFavoriteList}              
               removeGame={removeGame}
+              ratingGame={ratingGame}
               categories={newCategories}
               filter={filter}
               setFilter={setFilter}
             />
+            <GameList gameList={gameList} addGame={addGame} />
           </div>
         </StyledContainer>
       )}
