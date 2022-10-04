@@ -1,26 +1,16 @@
-import React from 'react'
-import GameCard from './GameCard'
-import GameFilters from './GameFilters'
+import React from "react";
+import { StyledButton } from "../../styles/button";
+import GameCard from "./GameCard";
+import { StyledGameList } from "./style";
 
-const GameList = ({ gameList, removeGame, categories, setFilter }) => {
+const GameList = ({ gameList, addGame }) => {
   return (
-    <>
-        <GameFilters categories={categories} setFilter={setFilter} />
-        {gameList.length ? (
-            <ul>
-            {gameList.map((game, index) => (
-                <GameCard key={index} game={game} removeGame={removeGame} />
-            ))}
-            </ul>
-        ) : (
-            <h1>
-                Não foi cadastrado nenhum jogo nesta lista.
-            </h1>
-        )}
-        
-    </>
-    
-  )
-}
+    <StyledGameList>
+      {gameList.map((game) => (
+        <GameCard key={game.id} game={game} addGame={addGame} />
+      ))}
+    </StyledGameList>
+  );
+};
 
-export default GameList
+export default GameList;
