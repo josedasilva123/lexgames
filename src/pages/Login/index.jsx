@@ -21,8 +21,7 @@ const Login = ({ setUser, setFavoriteList }) => {
 
   const navigate = useNavigate();
 
-  const submit = async (data) => {
-    console.log(data);
+  const submit = async (data) => {   
     try {
         setLoading(true);
         const response = await coreApi.post('user/login', data);
@@ -53,7 +52,7 @@ const Login = ({ setUser, setFavoriteList }) => {
           <StyledParagraph>{errors.password.message}</StyledParagraph>
         )}
         <StyledButton buttonStyle="solid1" type="submit" disabled={loading}>
-          {loading ? "Cadastrando..." : "Cadastre-se"}
+          {loading ? "Entrando..." : "Entrar"}
         </StyledButton>
       </StyledForm>
     </StyledContainer>
