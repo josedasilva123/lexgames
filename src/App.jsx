@@ -15,14 +15,21 @@ function App() {
   const [filter, setFilter] = useState(""); 
 
   const [currentPath, setCurrentPath] = useState('');
+  const [params, setParams] = useState(null);
 
   useEffect(() => {
-    setCurrentPath(window.location.pathname)
+    const search = window.location.search;
+    const pathname = window.location.pathname;
+    setCurrentPath((search ? pathname + search : pathname));
   }, [])
 
   useEffect(() => {
     window.history.pushState("","", currentPath);
   }, [currentPath])
+
+  function navigate(path){
+    setCurrentPath(path);
+  }
 
   /* pegando categorias da api e filtrando e removendo itens repetidos */
   const categories = gameList.map((game) => game.genre);
@@ -109,7 +116,7 @@ function App() {
         <h1>Carregando</h1>
       ) : (
         <>
-        {currentPath === "/home" && (
+        {currentPath.includes("/home") && (
           <StyledContainer containerSize="large">
           <div className="mainContainer">
             <FavoriteList
@@ -124,7 +131,7 @@ function App() {
           </div>
         </StyledContainer>
         )}
-        {currentPath === "/contato" && <h1 style={{ color: "#FFF"}}>Contato</h1>}
+        {currentPath.includes("/contato") && <h1 style={{ color: "#FFF"}}>Contato</h1>}
         </>
         
         
