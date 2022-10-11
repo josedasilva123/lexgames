@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GameCard /> should match with the snapshot 1`] = `
+<div>
+  <li
+    class="sc-gsnTZi ePFafV"
+  >
+    <div
+      class="content"
+    >
+      <img
+        alt="League of Legends"
+        src=""
+      />
+      <h3>
+        League of Legends
+      </h3>
+      <p>
+        Lorem ipsum
+      </p>
+    </div>
+    <button
+      class="sc-bczRLJ cTyziY"
+    >
+      Adicionar
+    </button>
+  </li>
+</div>
+`;
