@@ -57,4 +57,5 @@ export const StyledTitle = styled(BaseTitle)`
 export const StyledParagraph = styled.p`
     font-weight: 400;
     font-size: 16px;
+    color: ${({error}) => error ? "var(--color-red)" : "var(--color-white)"};
 `

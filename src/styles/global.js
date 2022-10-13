@@ -27,11 +27,16 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
     } 
 
+    a{
+      text-decoration: none;
+    }
+
     :root{
         --color-blue: #4B60BB;
         --color-darkblue: #0D1F4B;
         --color-lightblue: #6E9FD3;
         --color-white: #FBFEFF;
+        --color-red: #F55859;
     }
 
     body{
@@ -39,9 +44,14 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1, h2, h3, h4, h5, h6, p, span, li{
-    font-family: 'Roboto', sans-serif;
-    color: var(--color-white);
-}
+      font-family: 'Roboto', sans-serif;
+      color: var(--color-white);
+    }
+    
+    .Toastify__toast-theme--dark{
+      background: var(--color-darkblue);
+      border: 1px solid var(--color-lightblue);
+    }
 `;
 
 export const StyledContainer = styled.div`

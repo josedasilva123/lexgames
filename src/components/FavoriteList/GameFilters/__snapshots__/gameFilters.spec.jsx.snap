@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GameFilters /> should match with snapshot 1`] = `
+<div>
+  <div
+    class="sc-gsnTZi fmfXIE"
+  >
+    <button
+      class="sc-bczRLJ cTyziY"
+    >
+      Todos
+    </button>
+    <button
+      class="sc-bczRLJ dXjvqJ"
+    >
+      RPG
+    </button>
+    <button
+      class="sc-bczRLJ dXjvqJ"
+    >
+      MMORPG
+    </button>
+    <button
+      class="sc-bczRLJ dXjvqJ"
+    >
+      Shooter
+    </button>
+  </div>
+</div>
+`;

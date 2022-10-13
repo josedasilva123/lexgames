@@ -8,6 +8,7 @@ export const StyledForm = styled.form`
 
   input[type="text"],
   input[type="email"],
+  input[type="password"],
   select {
     width: 100%;
     display: inline-flex;
