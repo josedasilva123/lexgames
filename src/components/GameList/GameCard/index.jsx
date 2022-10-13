@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GamesContext } from "../../../contexts/GamesContext";
 import { StyledButton } from "../../../styles/button";
 import { StyledGameCard } from "./style";
 
-const GameCard = ({ game, addGame }) => {
+const GameCard = ({ game }) => {
+  const { addGame } = useContext(GamesContext);
   return (
     <StyledGameCard>
       <div className="content">

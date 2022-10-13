@@ -6,6 +6,6 @@ export const externalApi = axios.create({
 })
 
 export const coreApi = axios.create({
-    baseURL: 'https://lx-games-api.onrender.com/',
+    baseURL: 'http://localhost:3030/',
     timeout: 15000,
 })

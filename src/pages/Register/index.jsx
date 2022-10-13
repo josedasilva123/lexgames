@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { StyledButton, StyledIcon } from "../../styles/button";
 import { StyledForm } from "../../styles/form";
@@ -6,15 +6,15 @@ import { StyledContainer } from "../../styles/global";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { registerSchema } from "./registerSchema";
 import { StyledParagraph, StyledTitle } from "../../styles/typography";
-import { coreApi } from "../../services/api";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { StyledRegisterGrid } from "./style";
-import { toast } from "react-toastify";
+import { UserContext } from "../../contexts/UserContext";
 
 const Register = () => {
+  /* import */
+  const { userRegister } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
-  const [alert, setAlert] = useState(null);
 
   const {
     register,
@@ -24,23 +24,8 @@ const Register = () => {
     resolver: yupResolver(registerSchema),
   });
 
-  const navigate = useNavigate();
-
   const submit = async (data) => {
-    try {
-      setLoading(true);
-      const response = await coreApi.post("user", data);
-
-      toast.success(response.data.message);
-
-      setTimeout(() => {
-        navigate("/");
-      }, 2500);
-    } catch (error) {
-      toast.error(error.response.data.error);
-    } finally {
-      setLoading(false);
-    }
+    userRegister(data, setLoading);
   };
 
   return (

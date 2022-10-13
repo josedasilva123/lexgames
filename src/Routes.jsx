@@ -3,35 +3,17 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
+import ProtectedRoutes from "./components/ProtectedRoutes";
 
-const AppRoutes = ({
-  user,
-  setUser,
-  favoriteList,
-  setFavoriteList,
-  addGame,
-  removeGame,
-  ratingGame,
-}) => {
+const AppRoutes = () => {
   return (
     <Routes>
-      <Route
-        index
-        element={<Login setUser={setUser} setFavoriteList={setFavoriteList} />}
-      />
+      <Route index element={<Login />} />
       <Route path="/register" element={<Register />} />
-      <Route
-        path="/dashboard"
-        element={
-          <UserDashboard
-            user={user}
-            favoriteList={favoriteList}
-            addGame={addGame}
-            removeGame={removeGame}
-            ratingGame={ratingGame}
-          />
-        }
-      />
+
+      <Route path="/dashboard" element={<ProtectedRoutes />}>
+        <Route index element={<UserDashboard />} />
+      </Route>
     </Routes>
   );
 };

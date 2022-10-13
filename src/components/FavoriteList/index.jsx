@@ -4,7 +4,7 @@ import FavoriteCard from "./FavoriteCard";
 import GameFilters from "./GameFilters";
 import { StyledFavoriteList, StyledGrid } from "./style";
 
-const FavoriteList = ({ gameList, removeGame, ratingGame, categories, filter, setFilter }) => {
+const FavoriteList = ({ gameList, categories, filter, setFilter }) => {
   return (
     <StyledGrid>
       <GameFilters
@@ -15,7 +15,7 @@ const FavoriteList = ({ gameList, removeGame, ratingGame, categories, filter, se
       {gameList.length ? (
         <StyledFavoriteList>
           {gameList.map((game, index) => (
-            <FavoriteCard key={index} game={game} removeGame={removeGame} ratingGame={ratingGame} />
+            <FavoriteCard key={index} game={game} />
           ))}
         </StyledFavoriteList>
       ) : (

@@ -3,11 +3,11 @@ import { StyledButton } from "../../styles/button";
 import GameCard from "./GameCard";
 import { StyledGameList } from "./style";
 
-const GameList = ({ gameList, addGame }) => {
+const GameList = ({ gameList }) => {
   return (
     <StyledGameList>
       {gameList.map((game) => (
-        <GameCard key={game.id} game={game} addGame={addGame} />
+        <GameCard key={game.id} game={game} />
       ))}
     </StyledGameList>
   );

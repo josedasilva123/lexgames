@@ -1,18 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import FavoriteList from "../../components/FavoriteList";
 import GameList from "../../components/GameList";
 import { gameData } from "../../database";
 import { StyledContainer } from "../../styles/global";
 import { externalApi } from "../../services/api";
 import { StyledTitle } from "../../styles/typography";
+import { UserContext } from "../../contexts/UserContext";
+import { StyledButton } from "../../styles/button";
 
-const UserDashboard = ({
-  user,
-  favoriteList,
-  addGame,
-  removeGame,
-  ratingGame,
-}) => {
+const UserDashboard = () => {
+  const { user, favoriteList, userLogout } = useContext(UserContext);
   const [gameList, setGameList] = useState(gameData);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("");
@@ -26,7 +23,7 @@ const UserDashboard = ({
 
   useEffect(() => {
     const getGameList = async () => {
-      /* trycatch é uma estrutura que tentativa e erro, cada linha presente em try recebe uma tentativa de execução, caso haja erro, o código cai em catch */
+      
       try {
         setLoading(true);
         const response = await externalApi.get("games");
@@ -34,7 +31,6 @@ const UserDashboard = ({
         setGameList(response.data);
       } catch (error) {
         console.log(error);
-        /* finally é sempre executado independente de qualquer cenário */
       } finally {
         setLoading(false);
       }
@@ -48,19 +44,23 @@ const UserDashboard = ({
         <h1>Carregando</h1>
       ) : (
         <StyledContainer containerSize="large">
-          <StyledTitle tag="h1" fontSize="one">
+          <header>
+          <StyledTitle tag="h1" fontSize="one" >
             {user.name}
           </StyledTitle>
+          <StyledButton buttonStyle="outline" onClick={() => userLogout()}>
+            Sair
+          </StyledButton>
+          </header>
+
           <div className="mainContainer">
             <FavoriteList
               gameList={newFavoriteList}
-              removeGame={removeGame}
-              ratingGame={ratingGame}
               categories={newCategories}
               filter={filter}
               setFilter={setFilter}
             />
-            <GameList gameList={gameList} addGame={addGame} />
+            <GameList gameList={gameList} />
           </div>
         </StyledContainer>
       )}

@@ -1,17 +1,17 @@
 import { yupResolver } from "@hookform/resolvers/yup";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
-import { coreApi } from "../../services/api";
+import { Link } from "react-router-dom";
 import { StyledButton } from "../../styles/button";
 import { StyledForm } from "../../styles/form";
 import { StyledContainer } from "../../styles/global";
 import { StyledParagraph, StyledTitle } from "../../styles/typography";
 import { loginSchema } from "./loginSchema";
 import { StyledLoginGrid } from "./style";
-import { toast } from "react-toastify";
+import { UserContext } from "../../contexts/UserContext";
 
-const Login = ({ setUser, setFavoriteList }) => {
+const Login = () => {
+  const { userLogin } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
   const {
     register,
@@ -21,22 +21,8 @@ const Login = ({ setUser, setFavoriteList }) => {
     resolver: yupResolver(loginSchema),
   });
 
-  const navigate = useNavigate();
-
-  const submit = async (data) => {
-    try {
-      setLoading(true);
-      const response = await coreApi.post("user/login", data);
-      setUser(response.data.user);
-      setFavoriteList(response.data.user.favoriteGames);
-      localStorage.setItem("@TOKEN", response.data.token);
-      navigate("/dashboard");
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.error);
-    } finally {
-      setLoading(false);
-    }
+  const submit = (data) => {
+    userLogin(data, setLoading)
   };
 
   return (

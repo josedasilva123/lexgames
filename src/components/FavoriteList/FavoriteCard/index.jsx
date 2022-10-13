@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GamesContext } from "../../../contexts/GamesContext";
 import { StyledButton } from "../../../styles/button";
 import { StyledParagraph, StyledTitle } from "../../../styles/typography";
 import StarInput from "../../CustomInputs/StarInput";
 import { StyledFavoriteCard } from "./style";
 
-const FavoriteCard = ({ game, removeGame, ratingGame }) => {
+const FavoriteCard = ({ game }) => {
+  const { removeGame, ratingGame } = useContext(GamesContext);
   return (
     <StyledFavoriteCard>
       <div>
