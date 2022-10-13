@@ -27,7 +27,7 @@ export const UserProvider = ({ children }) => {
             })
             setUser(response.data.user);
             setFavoriteList(response.data.user.favoriteGames);
-            navigate(currentRoute);
+            navigate(currentRoute ? currentRoute : "/dashboard");
           } catch (error) {
             localStorage.removeItem("@TOKEN");
             navigate("/");
