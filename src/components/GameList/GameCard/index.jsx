@@ -1,17 +1,19 @@
 import React from "react";
-import styles from "./style.module.css";
+import { StyledButton } from "../../../styles/button";
+import { StyledGameCard } from "./style";
 
-const GameCard = ({ game, removeGame }) => {
+const GameCard = ({ game, addGame }) => {
   return (
-    <li className={styles.gameCard}>
-      <div>
-        <span className="paragraph">{game.category}</span>
-        <h3 className="title two">{game.name}</h3>
+    <StyledGameCard>
+      <div className="content">
+        <img src={game.thumbnail} alt={game.title} />
+        <h3>{game.title}</h3>
+        <p>{game.short_description}</p>
       </div>
-      <button className="btn solid2 default" onClick={() => removeGame(game)}>
-        Remover
-      </button>
-    </li>
+      <StyledButton buttonStyle="solid1" onClick={() => addGame(game)}>
+        Adicionar
+      </StyledButton>
+    </StyledGameCard>
   );
 };
 

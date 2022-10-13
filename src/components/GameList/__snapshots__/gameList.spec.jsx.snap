@@ -1,0 +1,102 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GameList /> should match with snapshot 1`] = `
+<div>
+  <ul
+    class="sc-dkzDqf geIEfv"
+  >
+    <li
+      class="sc-gsnTZi ePFafV"
+    >
+      <div
+        class="content"
+      >
+        <img
+          alt="Diablo Immortal"
+          src="https://www.freetogame.com/g/521/thumbnail.jpg"
+        />
+        <h3>
+          Diablo Immortal
+        </h3>
+        <p>
+          Built for mobile and also released on PC, Diablo Immortal fills in the gaps between Diablo II and III in an MMOARPG environment.
+        </p>
+      </div>
+      <button
+        class="sc-bczRLJ cTyziY"
+      >
+        Adicionar
+      </button>
+    </li>
+    <li
+      class="sc-gsnTZi ePFafV"
+    >
+      <div
+        class="content"
+      >
+        <img
+          alt="Lost Ark"
+          src="https://www.freetogame.com/g/517/thumbnail.jpg"
+        />
+        <h3>
+          Lost Ark
+        </h3>
+        <p>
+          Smilegate’s free-to-play multiplayer ARPG is a massive adventure filled with lands waiting to be explored, people waiting to be met, and an ancient evil waiting to be destroyed.
+        </p>
+      </div>
+      <button
+        class="sc-bczRLJ cTyziY"
+      >
+        Adicionar
+      </button>
+    </li>
+    <li
+      class="sc-gsnTZi ePFafV"
+    >
+      <div
+        class="content"
+      >
+        <img
+          alt="PUBG: BATTLEGROUNDS"
+          src="https://www.freetogame.com/g/516/thumbnail.jpg"
+        />
+        <h3>
+          PUBG: BATTLEGROUNDS
+        </h3>
+        <p>
+          Get into the action in one of the longest running battle royale games PUBG Battlegrounds.
+        </p>
+      </div>
+      <button
+        class="sc-bczRLJ cTyziY"
+      >
+        Adicionar
+      </button>
+    </li>
+    <li
+      class="sc-gsnTZi ePFafV"
+    >
+      <div
+        class="content"
+      >
+        <img
+          alt="Enlisted"
+          src="https://www.freetogame.com/g/508/thumbnail.jpg"
+        />
+        <h3>
+          Enlisted
+        </h3>
+        <p>
+          Get ready to command your own World War II military squad in Gaijin and Darkflow Software’s MMO squad-based shooter Enlisted. 
+        </p>
+      </div>
+      <button
+        class="sc-bczRLJ cTyziY"
+      >
+        Adicionar
+      </button>
+    </li>
+  </ul>
+</div>
+`;
