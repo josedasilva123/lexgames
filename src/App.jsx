@@ -1,7 +1,8 @@
 /* eslint-disable no-restricted-globals */
 import { useState } from "react";
-import UserDashboard from "./pages/UserDashboard";
 import AppRoutes from "./Routes";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -64,6 +65,7 @@ function App() {
         removeGame={removeGame}
         ratingGame={ratingGame}
       />
+      <ToastContainer autoClose={2500} position="top-center" theme="dark" />
     </div>
   );
 }
