@@ -14,6 +14,8 @@ export const UserProvider = ({ children }) => {
     const [favoriteList, setFavoriteList] = useState([]);
     const [currentRoute, setCurrentRoute] = useState(null);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
       (async () => {
         const token = localStorage.getItem("@TOKEN");
@@ -38,8 +40,7 @@ export const UserProvider = ({ children }) => {
       })();
     }, [])
 
-    const navigate = useNavigate();
-
+    /* Botão de login */
     const userLogin = async (data, setLoading) => {
         try {
             setLoading(true);
