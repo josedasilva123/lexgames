@@ -9,7 +9,7 @@ import { UserContext } from "../../contexts/UserContext";
 import { StyledButton } from "../../styles/button";
 
 const UserDashboard = () => {
-  const { user, favoriteList, userLogout } = useContext(UserContext);
+  const { user, userLogout } = useContext(UserContext);
   const [gameList, setGameList] = useState(gameData);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("");
@@ -17,7 +17,7 @@ const UserDashboard = () => {
   const categories = gameList.map((game) => game.genre);
   const newCategories = [...new Set(categories)];
 
-  const newFavoriteList = favoriteList.filter((game) =>
+  const newFavoriteList = user?.favoriteGames.filter((game) =>
     filter === "" ? true : game.genre === filter
   );
 

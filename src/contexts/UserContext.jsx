@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useReducer } from "react";
 import { useNavigate } from "react-router-dom";
 import { coreApi } from "../services/api";
 import { toast } from "react-toastify";
@@ -8,10 +8,27 @@ export const UserContext = createContext({});
 
 /* Cria o contexto, exporta lógica por meio do provider */
 
+export const userActions = {
+  setUser: "user/setUser",
+  setTechs: "user/setFavoriteList",
+}
+
+
+export const userReducer = (state, action) => {
+  switch(action.type){
+    case userActions.setUser: 
+      return action.payload
+    case userActions.setFavoriteList:
+      return { ...state, favoriteGames: action.payload }  
+    default:
+      return state  
+  }
+}
+
 export const UserProvider = ({ children }) => {
   const [globalLoading, setGlobalLoading] = useState();
-  const [user, setUser] = useState(null);
-  const [favoriteList, setFavoriteList] = useState([]);
+  /* definir multiplas regras de alteração de estado */
+  const [user, dispatchUser] = useReducer(userReducer, null);
   const [currentRoute, setCurrentRoute] = useState(null);
 
   const navigate = useNavigate();
@@ -28,8 +45,7 @@ export const UserProvider = ({ children }) => {
             },
           });
 
-          setUser(response.data.user);
-          setFavoriteList(response.data.user.favoriteGames);
+          dispatchUser({ type: userActions.setUser, payload: response.data.user});
           navigate(currentRoute ? currentRoute : "/dashboard");
           
         } catch (error) {
@@ -48,8 +64,7 @@ export const UserProvider = ({ children }) => {
       setLoading(true);
       const response = await coreApi.post("user/login", data);
 
-      setUser(response.data.user);
-      setFavoriteList(response.data.user.favoriteGames);
+      dispatchUser({ type: userActions.setUser, payload: response.data.user});
       
       localStorage.setItem("@TOKEN", response.data.token);
       navigate("/dashboard");
@@ -65,8 +80,7 @@ export const UserProvider = ({ children }) => {
   };
 
   const userLogout = () => {
-    setUser(null);
-    setFavoriteList([]);
+    dispatchUser({ type: userActions.setUser, payload: null });
     navigate("/");
     localStorage.removeItem("@TOKEN");
   };
@@ -93,8 +107,7 @@ export const UserProvider = ({ children }) => {
     <UserContext.Provider
       value={{
         user,
-        favoriteList,
-        setFavoriteList,
+        dispatchUser,
         currentRoute,
         setCurrentRoute,
         userLogin,
