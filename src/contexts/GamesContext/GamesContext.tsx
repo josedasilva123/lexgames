@@ -1,15 +1,18 @@
 /* eslint-disable no-restricted-globals */
 import { createContext, useContext } from "react";
-import { coreApi } from "../services/api";
-import { UserContext } from "./UserContext";
+import { coreApi } from "../../services/api";
+import { UserContext } from "../UserContext";
 import { toast } from "react-toastify";
+import { iApiError, iDefaultContextProps, iGame } from "../types/types";
+import { AxiosError } from "axios";
+import { iGamesContext } from "./types";
 
-export const GamesContext = createContext({});
+export const GamesContext = createContext({} as iGamesContext);
 
-export const GamesProvider = ({ children }) => {
+export const GamesProvider = ({ children }: iDefaultContextProps) => {
   const { favoriteList, setFavoriteList } = useContext(UserContext);
 
-  const addGame = async (gameData) => {
+  const addGame = async (gameData: iGame) => {
     if (!favoriteList.find((game) => game.id === gameData.id)) {
       try {
         const token = localStorage.getItem("@TOKEN");
@@ -32,7 +35,7 @@ export const GamesProvider = ({ children }) => {
           },
           {
             headers: {
-              auth: token,
+              auth: token as string,
             },
           }
         ); /* Atualiza o banco de dados */
@@ -40,15 +43,15 @@ export const GamesProvider = ({ children }) => {
         toast.success("Jogo adicionado com sucesso!");
         setFavoriteList(newData); /* Estado */
       } catch (error) {
-        console.log(error);
-        toast.error(error.response.data.error);
+        const requestError = error as AxiosError<iApiError>
+        toast.error(requestError.response?.data.error);
       }
     } else {
-      toast.alert("Este jogo já está cadastrado na lista.");
+      toast.warn("Este jogo já está cadastrado na lista.");
     }
   };
 
-  const removeGame = async (clickedGame) => {
+  const removeGame = async (clickedGame: iGame) => {
     if (confirm("Deseja excluir mesmo este item?")) {
       try {
         const newGameList = favoriteList.filter((game) => game.id !== clickedGame.id);
@@ -61,7 +64,7 @@ export const GamesProvider = ({ children }) => {
           },
           {
             headers: {
-              auth: token,
+              auth: token as string,
             },
           }
         );
@@ -69,8 +72,8 @@ export const GamesProvider = ({ children }) => {
         toast.success("Jogo removido com sucesso!");
         setFavoriteList(newGameList);
       } catch (error) {
-        console.log(error);
-        toast.error(error.response.data.error);
+        const requestError = error as AxiosError<iApiError>
+        toast.error(requestError.response?.data.error);
       }
     }
 
@@ -79,7 +82,7 @@ export const GamesProvider = ({ children }) => {
     }
   };
 
-  const ratingGame = async (gameId, rating) => {
+  const ratingGame = async (gameId: number, rating: number) => {
     try {
       const token = localStorage.getItem("@TOKEN");
       
@@ -98,7 +101,7 @@ export const GamesProvider = ({ children }) => {
         },
         {
           headers: {
-            auth: token,
+            auth: token as string,
           },
         }
       );
@@ -106,8 +109,8 @@ export const GamesProvider = ({ children }) => {
       toast.success("Avaliação realizada com sucesso!")
       setFavoriteList(newFavoriteList);
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.error);
+      const requestError = error as AxiosError<iApiError>
+      toast.error(requestError.response?.data.error);
     }   
   };
 

@@ -54,7 +54,11 @@ export const GlobalStyle = createGlobalStyle`
     }
 `;
 
-export const StyledContainer = styled.div`
+interface iStyledContainerProps{
+  containerSize?: "small" | "large";
+}
+
+export const StyledContainer = styled.div<iStyledContainerProps>`
   width: 100%;
   margin: 0 auto;
   padding: 1rem;

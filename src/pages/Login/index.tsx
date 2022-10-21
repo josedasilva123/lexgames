@@ -1,6 +1,6 @@
 import { yupResolver } from "@hookform/resolvers/yup";
 import React, { useContext, useState } from "react";
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { StyledButton } from "../../styles/button";
 import { StyledForm } from "../../styles/form";
@@ -10,6 +10,11 @@ import { loginSchema } from "./loginSchema";
 import { StyledLoginGrid } from "./style";
 import { UserContext } from "../../contexts/UserContext";
 
+export interface iLoginFormData{
+  email: string;
+  password: string;
+}
+
 const Login = () => {
   const { userLogin } = useContext(UserContext);
   const [loading, setLoading] = useState(false);
@@ -18,11 +23,12 @@ const Login = () => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm({
+  } = useForm<iLoginFormData>({
     resolver: yupResolver(loginSchema),
   });
+  
 
-  const submit = (data) => {
+  const submit: SubmitHandler<iLoginFormData> = (data) => {
     userLogin(data, setLoading, () => {
       reset();
     })

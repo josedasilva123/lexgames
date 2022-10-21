@@ -10,6 +10,13 @@ import { Link } from "react-router-dom";
 import { MdArrowBack } from "react-icons/md";
 import { StyledRegisterGrid } from "./style";
 import { UserContext } from "../../contexts/UserContext";
+import { SubmitHandler } from "react-hook-form";
+
+export interface iRegisterFormData{
+  name: string;
+  email: string;
+  password: string;
+}
 
 const Register = () => {
   /* import */
@@ -20,11 +27,11 @@ const Register = () => {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<iRegisterFormData>({
     resolver: yupResolver(registerSchema),
   });
 
-  const submit = async (data) => {
+  const submit: SubmitHandler<iRegisterFormData> = async (data) => {
     userRegister(data, setLoading);
   };
 

@@ -17,10 +17,9 @@ export const fadeIn = keyframes`
 
 export const StyledTitle = styled(BaseTitle)`
     font-weight: 700;
-    color: ${(props) => props.fontColor}; /* utilizando o valor da props como valor de color */
+    color: ${(props) => props.fontColor}; 
     animation: ${fadeIn} .6s forwards;
 
-    /* Regra condicional com props, o CSS se altera com base no valor da prop */
     ${({fontSize}) => {
         switch (fontSize){
             case "one":
@@ -54,7 +53,11 @@ export const StyledTitle = styled(BaseTitle)`
 
 `
 
-export const StyledParagraph = styled.p`
+interface iStyledParagraphProps{
+    error?: boolean;
+}
+
+export const StyledParagraph = styled.p<iStyledParagraphProps>`
     font-weight: 400;
     font-size: 16px;
     color: ${({error}) => error ? "var(--color-red)" : "var(--color-white)"};

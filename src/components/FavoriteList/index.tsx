@@ -1,10 +1,18 @@
 import React from "react";
+import { iGame } from "../../contexts/types/types";
 import { StyledTitle } from "../../styles/typography";
 import FavoriteCard from "./FavoriteCard";
 import GameFilters from "./GameFilters";
 import { StyledFavoriteList, StyledGrid } from "./style";
 
-const FavoriteList = ({ gameList, categories, filter, setFilter }) => {
+interface iFavoriteListProps{
+  gameList: iGame[];
+  categories: string[];
+  filter: string;
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const FavoriteList = ({ gameList, categories, filter, setFilter }: iFavoriteListProps) => {
   return (
     <StyledGrid>
       <GameFilters

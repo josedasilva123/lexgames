@@ -1,7 +1,12 @@
 import React from "react";
 import { MdStar, MdStarOutline } from "react-icons/md";
 
-const StarInput = ({ currentRating, callback }) => {
+interface iStarInputProps{
+  currentRating: number;
+  callback: (number: number) => void;
+}
+
+const StarInput = ({ currentRating, callback }: iStarInputProps) => {
   return (
     <div>
       {[1, 2, 3, 4, 5].map((number, index) => (
