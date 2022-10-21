@@ -35,10 +35,10 @@ export const GamesProvider = ({ children }) => {
               auth: token,
             },
           }
-        );
+        ); /* Atualiza o banco de dados */
 
-        toast.success("Nota adicionada com sucesso!");
-        setFavoriteList(newData);
+        toast.success("Jogo adicionado com sucesso!");
+        setFavoriteList(newData); /* Estado */
       } catch (error) {
         console.log(error);
         toast.error(error.response.data.error);
@@ -51,7 +51,7 @@ export const GamesProvider = ({ children }) => {
   const removeGame = async (clickedGame) => {
     if (confirm("Deseja excluir mesmo este item?")) {
       try {
-        const newGameList = favoriteList.filter((game) => game !== clickedGame);
+        const newGameList = favoriteList.filter((game) => game.id !== clickedGame.id);
         const token = localStorage.getItem("@TOKEN");
 
         await coreApi.patch(
@@ -66,7 +66,7 @@ export const GamesProvider = ({ children }) => {
           }
         );
 
-        toast.success("Nota adicionada com sucesso!");
+        toast.success("Jogo removido com sucesso!");
         setFavoriteList(newGameList);
       } catch (error) {
         console.log(error);
@@ -103,6 +103,7 @@ export const GamesProvider = ({ children }) => {
         }
       );
 
+      toast.success("Avaliação realizada com sucesso!")
       setFavoriteList(newFavoriteList);
     } catch (error) {
       console.log(error);

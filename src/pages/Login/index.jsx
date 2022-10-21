@@ -17,12 +17,15 @@ const Login = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm({
     resolver: yupResolver(loginSchema),
   });
 
   const submit = (data) => {
-    userLogin(data, setLoading)
+    userLogin(data, setLoading, () => {
+      reset();
+    })
   };
 
   return (
