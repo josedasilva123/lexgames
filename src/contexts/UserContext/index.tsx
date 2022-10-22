@@ -1,18 +1,25 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useEffect, useState } from "react";
+import React, {
+  createContext,
+  useEffect,
+  useState,
+} from "react";
 import { useNavigate } from "react-router-dom";
-import { coreApi } from "../services/api";
+import { coreApi } from "../../services/api";
 import { toast } from "react-toastify";
+import { iLoginFormData } from "../../pages/Login";
+import { AxiosError, AxiosResponse } from "axios";
+import { iRegisterFormData } from "../../pages/Register";
+import { iUser, iGame, iApiError, iDefaultContextProps } from "../types/types";
+import { iUserContext, iLoginResponse } from "./types";
 
-export const UserContext = createContext({});
+export const UserContext = createContext({} as iUserContext);
 
-/* Cria o contexto, exporta lógica por meio do provider */
-
-export const UserProvider = ({ children }) => {
-  const [globalLoading, setGlobalLoading] = useState();
-  const [user, setUser] = useState(null);
-  const [favoriteList, setFavoriteList] = useState([]);
-  const [currentRoute, setCurrentRoute] = useState(null);
+export const UserProvider = ({ children }: iDefaultContextProps) => {
+  const [globalLoading, setGlobalLoading] = useState(false);
+  const [user, setUser] = useState<iUser | null>(null);
+  const [favoriteList, setFavoriteList] = useState([] as iGame[]);
+  const [currentRoute, setCurrentRoute] = useState<string | null>(null);
 
   const navigate = useNavigate();
 
@@ -31,7 +38,6 @@ export const UserProvider = ({ children }) => {
           setUser(response.data.user);
           setFavoriteList(response.data.user.favoriteGames);
           navigate(currentRoute ? currentRoute : "/dashboard");
-          
         } catch (error) {
           localStorage.removeItem("@TOKEN");
           navigate("/");
@@ -43,22 +49,26 @@ export const UserProvider = ({ children }) => {
   }, []);
 
   /* Botão de login */
-  const userLogin = async (data, setLoading, callback) => {
+  const userLogin = async (
+    data: iLoginFormData,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>,
+    callback: (response: iLoginResponse) => void
+  ) => {
     try {
       setLoading(true);
-      const response = await coreApi.post("user/login", data);
+      const response = await coreApi.post<iLoginResponse>("user/login", data);
 
       setUser(response.data.user);
       setFavoriteList(response.data.user.favoriteGames);
-      
+
       localStorage.setItem("@TOKEN", response.data.token);
       navigate("/dashboard");
-      if(callback){
+      if (callback) {
         callback(response.data);
       }
     } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.error);
+      const requestError = error as AxiosError<iApiError>;
+      toast.error(requestError.response?.data.error);
     } finally {
       setLoading(false);
     }
@@ -71,7 +81,10 @@ export const UserProvider = ({ children }) => {
     localStorage.removeItem("@TOKEN");
   };
 
-  const userRegister = async (data, setLoading) => {
+  const userRegister = async (
+    data: iRegisterFormData,
+    setLoading: React.Dispatch<React.SetStateAction<boolean>>
+  ) => {
     try {
       setLoading(true);
       const response = await coreApi.post("user", data);
@@ -82,7 +95,8 @@ export const UserProvider = ({ children }) => {
         navigate("/");
       }, 2500);
     } catch (error) {
-      toast.error(error.response.data.error);
+      const requestError = error as AxiosError<iApiError>;
+      toast.error(requestError.response?.data.error);
     } finally {
       setLoading(false);
     }
@@ -98,8 +112,8 @@ export const UserProvider = ({ children }) => {
         currentRoute,
         setCurrentRoute,
         userLogin,
-        userRegister,
         userLogout,
+        userRegister,        
         globalLoading,
       }}
     >

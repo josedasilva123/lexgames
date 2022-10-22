@@ -1,8 +1,12 @@
 import React from 'react'
-import { GamesProvider } from './GamesContext'
+import { GamesProvider } from './GamesContext/GamesContext'
 import { UserProvider } from './UserContext'
 
-const Providers = ({children}) => {
+interface iProvidersProps{
+  children: React.ReactNode;
+}
+
+const Providers = ({children}: iProvidersProps) => {
   return (
     <UserProvider>
         <GamesProvider>

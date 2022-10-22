@@ -7,14 +7,15 @@ import { externalApi } from "../../services/api";
 import { StyledTitle } from "../../styles/typography";
 import { UserContext } from "../../contexts/UserContext";
 import { StyledButton } from "../../styles/button";
+import { iGame } from "../../contexts/types/types";
 
 const UserDashboard = () => {
   const { user, favoriteList, userLogout } = useContext(UserContext);
-  const [gameList, setGameList] = useState(gameData);
+  const [gameList, setGameList] = useState<iGame[]>(gameData);
   const [loading, setLoading] = useState(false);
   const [filter, setFilter] = useState("");
 
-  const categories = gameList.map((game) => game.genre);
+  const categories = gameList.map((game) => game.genre) ;
   const newCategories = [...new Set(categories)];
 
   const newFavoriteList = favoriteList.filter((game) =>
@@ -46,7 +47,7 @@ const UserDashboard = () => {
         <StyledContainer containerSize="large">
           <header>
           <StyledTitle tag="h1" fontSize="one" >
-            {user.name}
+            {user?.name}
           </StyledTitle>
           <StyledButton buttonStyle="outline" onClick={() => userLogout()}>
             Sair

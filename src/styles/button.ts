@@ -1,7 +1,12 @@
 /* eslint-disable default-case */
 import styled, { css } from "styled-components";
 
-export const StyledButton = styled.button`
+interface iStyledButtonProps{
+  buttonSize?: "big";
+  buttonStyle: "solid1" | "solid2" | "outline";
+}
+
+export const StyledButton = styled.button<iStyledButtonProps>`
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 400;
