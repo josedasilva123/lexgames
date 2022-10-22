@@ -1,14 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
+import { iGame } from "../../../contexts/types/types";
 import { StyledButton } from "../../../styles/button";
 import { StyledParagraph, StyledTitle } from "../../../styles/typography";
 import StarInput from "../../CustomInputs/StarInput";
 import { StyledFavoriteCard } from "./style";
 
-const FavoriteCard = ({ game, removeGame, ratingGame }) => {
+interface iFavoriteCardProps{
+  game: iGame;
+}
+
+const FavoriteCard = ({ game }: iFavoriteCardProps) => {
+  const { removeGame, ratingGame } = useContext(GamesContext);
   return (
     <StyledFavoriteCard>
       <div>
-        <StarInput currentRating={game.rating ? game.rating : 0} callback={(number) => ratingGame(game.id, number)} />
+        <StarInput currentRating={game.rating ? game.rating : 0} callback={(number: number) => ratingGame(game.id, number)} />
         {game.rating && <StyledParagraph>{game.rating}</StyledParagraph>}
         <StyledParagraph>{game.genre}</StyledParagraph>
        

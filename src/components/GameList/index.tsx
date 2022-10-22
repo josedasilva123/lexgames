@@ -1,13 +1,17 @@
 import React from "react";
-import { StyledButton } from "../../styles/button";
+import { iGame } from "../../contexts/types/types";
 import GameCard from "./GameCard";
 import { StyledGameList } from "./style";
 
-const GameList = ({ gameList, addGame }) => {
+interface iGameListProps{
+  gameList: iGame[];
+}
+
+const GameList = ({ gameList }: iGameListProps) => {
   return (
     <StyledGameList>
       {gameList.map((game) => (
-        <GameCard key={game.id} game={game} addGame={addGame} />
+        <GameCard key={game.id} game={game} />
       ))}
     </StyledGameList>
   );
