@@ -3,25 +3,25 @@
 exports[`<GameFilters /> should match with snapshot 1`] = `
 <div>
   <div
-    class="sc-gsnTZi fmfXIE"
+    class="sc-dkzDqf hTMpNr"
   >
     <button
-      class="sc-bczRLJ cTyziY"
+      class="sc-bczRLJ hoyupM"
     >
       Todos
     </button>
     <button
-      class="sc-bczRLJ dXjvqJ"
+      class="sc-bczRLJ eUvmhx"
     >
       RPG
     </button>
     <button
-      class="sc-bczRLJ dXjvqJ"
+      class="sc-bczRLJ eUvmhx"
     >
       MMORPG
     </button>
     <button
-      class="sc-bczRLJ dXjvqJ"
+      class="sc-bczRLJ eUvmhx"
     >
       Shooter
     </button>

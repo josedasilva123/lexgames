@@ -2,7 +2,13 @@ import React from "react";
 import { StyledButton } from "../../../styles/button";
 import { StyledGameFilters } from "./style";
 
-const GameFilters = ({ categories, filter, setFilter }) => {
+interface iGameFiltersProps{
+  categories: string[];
+  filter: string;
+  setFilter: React.Dispatch<React.SetStateAction<string>>;
+}
+
+const GameFilters = ({ categories, filter, setFilter }: iGameFiltersProps) => {
   return (
     <StyledGameFilters>
       <StyledButton buttonStyle={(filter === "" ? "solid1" : "outline")} onClick={() => setFilter("")}>Todos</StyledButton>
