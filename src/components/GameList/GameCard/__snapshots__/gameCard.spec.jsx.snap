@@ -3,7 +3,7 @@
 exports[`<GameCard /> should match with the snapshot 1`] = `
 <div>
   <li
-    class="sc-gsnTZi ePFafV"
+    class="sc-dkzDqf FDbzK"
   >
     <div
       class="content"
@@ -20,7 +20,7 @@ exports[`<GameCard /> should match with the snapshot 1`] = `
       </p>
     </div>
     <button
-      class="sc-bczRLJ cTyziY"
+      class="sc-bczRLJ hoyupM"
     >
       Adicionar
     </button>

@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { coreApi } from "../../services/api";
 import { toast } from "react-toastify";
 import { iLoginFormData } from "../../pages/Login";
-import { AxiosError, AxiosResponse } from "axios";
+import { AxiosError } from "axios";
 import { iRegisterFormData } from "../../pages/Register";
 import { iUser, iGame, iApiError, iDefaultContextProps } from "../types/types";
 import { iUserContext, iLoginResponse } from "./types";

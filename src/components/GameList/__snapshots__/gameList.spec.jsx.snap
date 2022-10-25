@@ -3,10 +3,10 @@
 exports[`<GameList /> should match with snapshot 1`] = `
 <div>
   <ul
-    class="sc-dkzDqf geIEfv"
+    class="sc-hKMtZM eRPquc"
   >
     <li
-      class="sc-gsnTZi ePFafV"
+      class="sc-dkzDqf FDbzK"
     >
       <div
         class="content"
@@ -23,13 +23,13 @@ exports[`<GameList /> should match with snapshot 1`] = `
         </p>
       </div>
       <button
-        class="sc-bczRLJ cTyziY"
+        class="sc-bczRLJ hoyupM"
       >
         Adicionar
       </button>
     </li>
     <li
-      class="sc-gsnTZi ePFafV"
+      class="sc-dkzDqf FDbzK"
     >
       <div
         class="content"
@@ -46,13 +46,13 @@ exports[`<GameList /> should match with snapshot 1`] = `
         </p>
       </div>
       <button
-        class="sc-bczRLJ cTyziY"
+        class="sc-bczRLJ hoyupM"
       >
         Adicionar
       </button>
     </li>
     <li
-      class="sc-gsnTZi ePFafV"
+      class="sc-dkzDqf FDbzK"
     >
       <div
         class="content"
@@ -69,13 +69,13 @@ exports[`<GameList /> should match with snapshot 1`] = `
         </p>
       </div>
       <button
-        class="sc-bczRLJ cTyziY"
+        class="sc-bczRLJ hoyupM"
       >
         Adicionar
       </button>
     </li>
     <li
-      class="sc-gsnTZi ePFafV"
+      class="sc-dkzDqf FDbzK"
     >
       <div
         class="content"
@@ -92,7 +92,7 @@ exports[`<GameList /> should match with snapshot 1`] = `
         </p>
       </div>
       <button
-        class="sc-bczRLJ cTyziY"
+        class="sc-bczRLJ hoyupM"
       >
         Adicionar
       </button>
