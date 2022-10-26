@@ -1,5 +1,5 @@
 import React from "react";
-import { iGame } from "../types/types";
+import { iGame } from "../@types/types";
 
 export interface iGamesContext{
     addGame: (gameData: iGame) => void;

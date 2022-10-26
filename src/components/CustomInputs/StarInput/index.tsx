@@ -1,5 +1,6 @@
 import React from "react";
 import { MdStar, MdStarOutline } from "react-icons/md";
+import { StyledStarInput } from "./style";
 
 interface iStarInputProps{
   currentRating: number;
@@ -8,7 +9,7 @@ interface iStarInputProps{
 
 const StarInput = ({ currentRating, callback }: iStarInputProps) => {
   return (
-    <div>
+    <StyledStarInput>
       {[1, 2, 3, 4, 5].map((number, index) => (
         <span key={index}  onClick={() => callback(number)} role="listitem">
           {currentRating >= number ? (
@@ -18,7 +19,7 @@ const StarInput = ({ currentRating, callback }: iStarInputProps) => {
           )}
         </span>
       ))}
-    </div>
+    </StyledStarInput>
   );
 };
 

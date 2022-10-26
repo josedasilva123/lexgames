@@ -10,7 +10,7 @@ import { toast } from "react-toastify";
 import { iLoginFormData } from "../../pages/Login";
 import { AxiosError } from "axios";
 import { iRegisterFormData } from "../../pages/Register";
-import { iUser, iGame, iApiError, iDefaultContextProps } from "../types/types";
+import { iUser, iGame, iApiError, iDefaultContextProps } from "../@types/types";
 import { iUserContext, iLoginResponse } from "./types";
 
 export const UserContext = createContext({} as iUserContext);
