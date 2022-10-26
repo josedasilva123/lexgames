@@ -23,8 +23,6 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
 
   const navigate = useNavigate(); 
 
-
-
   useEffect(() => {
     (async () => {
       const token = localStorage.getItem("@TOKEN"); 

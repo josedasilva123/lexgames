@@ -3,9 +3,9 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+import ProtectedRoutes from "./components/RouteProtection/ProtectedRoutes";
 import Favorites from "./pages/Favorites";
-import PublicLoginRoutes from "./components/PublicLoginRoutes";
+import PublicLoginRoutes from "./components/RouteProtection/PublicLoginRoutes";
 
 const AppRoutes = () => {
   return (
