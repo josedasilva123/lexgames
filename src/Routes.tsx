@@ -4,6 +4,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import ProtectedRoutes from "./components/ProtectedRoutes";
+import Favorites from "./pages/Favorites";
 
 const AppRoutes = () => {
   return (
@@ -11,8 +12,9 @@ const AppRoutes = () => {
       <Route index element={<Login />} />
       <Route path="/register" element={<Register />} />
 
-      <Route path="/dashboard" element={<ProtectedRoutes />}>
-        <Route index element={<UserDashboard />} />
+      <Route path="/" element={<ProtectedRoutes />}>
+        <Route path="dashboard" element={<UserDashboard />} />
+        <Route path="favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );
