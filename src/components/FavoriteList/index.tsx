@@ -7,6 +7,7 @@ import { StyledFavoriteList, StyledGrid } from "./style";
 
 const FavoriteList = () => {
   const { newFavoriteList } = useContext(GamesContext);
+  
   return (
     <StyledGrid>
       <GameFilters />

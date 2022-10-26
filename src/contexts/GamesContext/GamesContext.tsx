@@ -33,6 +33,7 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
           },
         ];
 
+        /* Banco de dados */
         await coreApi.patch(
           "user/favorites",
           {
@@ -43,7 +44,7 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
               auth: token as string,
             },
           }
-        ); /* Atualiza o banco de dados */
+        ); 
 
         toast.success("Jogo adicionado com sucesso!");
         setFavoriteList(newData); /* Estado */

@@ -12,11 +12,13 @@ interface iFavoriteCardProps {
 
 const FavoriteCard = ({ game }: iFavoriteCardProps) => {
   const { removeGame, ratingGame } = useContext(GamesContext);
+
   return (
     <StyledFavoriteCard>
       <div>
         <div className="favoriteRating">
           {game.rating && <StyledParagraph>{game.rating}</StyledParagraph>}
+
           <StarInput
             currentRating={game.rating ? game.rating : 0}
             callback={(number: number) => ratingGame(game.id, number)}
@@ -24,10 +26,12 @@ const FavoriteCard = ({ game }: iFavoriteCardProps) => {
         </div>
 
         <StyledParagraph>{game.genre}</StyledParagraph>
+
         <StyledTitle tag="h3" fontSize="two">
           {game.title}
         </StyledTitle>
       </div>
+
       <StyledButton buttonStyle="solid2" onClick={() => removeGame(game)}>
         Remover
       </StyledButton>

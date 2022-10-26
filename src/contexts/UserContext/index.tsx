@@ -22,10 +22,10 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
   const [currentRoute, setCurrentRoute] = useState<string | null>(null);
 
   const navigate = useNavigate();
-
+  
   useEffect(() => {
     (async () => {
-      const token = localStorage.getItem("@TOKEN");
+      const token = localStorage.getItem("@TOKEN"); 
       if (token) {
         setGlobalLoading(true);
         try {
@@ -48,7 +48,6 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
     })();
   }, []);
 
-  /* Botão de login */
   const userLogin = async (
     data: iLoginFormData,
     setLoading: React.Dispatch<React.SetStateAction<boolean>>,
@@ -61,7 +60,7 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
       setUser(response.data.user);
       setFavoriteList(response.data.user.favoriteGames);
 
-      localStorage.setItem("@TOKEN", response.data.token);
+      localStorage.setItem("@TOKEN", response.data.token); 
       navigate("/dashboard");
       if (callback) {
         callback(response.data);
@@ -102,7 +101,6 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
     }
   };
 
-  /* export */
   return (
     <UserContext.Provider
       value={{
