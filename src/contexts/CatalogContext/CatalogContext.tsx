@@ -8,8 +8,7 @@ export const CatalogContext = createContext({} as iCatalogContext);
 
 export const CatalogProvider = ({children}: iDefaultContextProps) => {
     const [loading, setLoading] = useState(false);
-    const [gameList, setGameList] = useState<iGame[]>(gameData);
-   
+    const [gameList, setGameList] = useState<iGame[]>(gameData);   
   
     const categories = gameList.map((game) => game.genre);
     const newCategories = [...new Set(categories)]; 

@@ -1,19 +1,20 @@
-import React from 'react'
-import { GamesProvider } from './GamesContext/GamesContext'
-import { UserProvider } from './UserContext'
+import React from "react";
+import { CatalogProvider } from "./CatalogContext/CatalogContext";
+import { GamesProvider } from "./GamesContext/GamesContext";
+import { UserProvider } from "./UserContext";
 
-interface iProvidersProps{
+interface iProvidersProps {
   children: React.ReactNode;
 }
 
-const Providers = ({children}: iProvidersProps) => {
+const Providers = ({ children }: iProvidersProps) => {
   return (
     <UserProvider>
-        <GamesProvider>
-            {children}
-        </GamesProvider>
+      <CatalogProvider>
+        <GamesProvider>{children}</GamesProvider>
+      </CatalogProvider>
     </UserProvider>
-  )
-}
+  );
+};
 
-export default Providers
+export default Providers;

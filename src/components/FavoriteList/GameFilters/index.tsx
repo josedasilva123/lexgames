@@ -7,12 +7,12 @@ import { StyledGameFilters } from "./style";
 const GameFilters = () => {
   const { filter, setFilter } = useContext(GamesContext);
   const { newCategories } = useContext(CatalogContext);
-  
+
   return (
     <StyledGameFilters>
       <StyledButton buttonStyle={(filter === "" ? "solid1" : "outline")} onClick={() => setFilter("")}>Todos</StyledButton>
      
-      {newCategories.map((category) => (
+      {newCategories?.map((category) => (
         <StyledButton key={category} buttonStyle={(filter === category ? "solid1" : "outline")} onClick={() => setFilter(category)}>
           {category}
         </StyledButton>
