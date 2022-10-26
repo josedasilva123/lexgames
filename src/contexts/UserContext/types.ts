@@ -1,6 +1,6 @@
 import { iLoginFormData } from "../../pages/Login";
 import { iRegisterFormData } from "../../pages/Register";
-import { iUser, iGame } from "../types/types";
+import { iUser, iGame } from "../@types/types";
 
 export interface iLoginResponse {
   user: iUser;

@@ -1,4 +1,4 @@
-import { iGame } from "../types/types";
+import { iGame } from "../@types/types";
 
 export interface iCatalogContext{
     loading: boolean;

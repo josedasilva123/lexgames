@@ -3,7 +3,7 @@ import { createContext, useContext, useState } from "react";
 import { coreApi } from "../../services/api";
 import { UserContext } from "../UserContext";
 import { toast } from "react-toastify";
-import { iApiError, iDefaultContextProps, iGame } from "../types/types";
+import { iApiError, iDefaultContextProps, iGame } from "../@types/types";
 import { AxiosError } from "axios";
 import { iGamesContext } from "./types";
 

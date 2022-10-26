@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { gameData } from "../../database";
 import { externalApi } from "../../services/api";
-import { iDefaultContextProps, iGame } from "../types/types";
+import { iDefaultContextProps, iGame } from "../@types/types";
 import { iCatalogContext } from "./types";
 
 export const CatalogContext = createContext({} as iCatalogContext);
