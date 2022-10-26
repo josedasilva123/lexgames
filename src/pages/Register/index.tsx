@@ -49,6 +49,9 @@ const Register = () => {
             <StyledTitle tag="h2" fontSize="two">
               Cadastre-se
             </StyledTitle>
+            <StyledParagraph>
+              Preencha todos os campos para efetuar o cadastro
+            </StyledParagraph>
             <input
               type="text"
               placeholder="Digite seu nome"
