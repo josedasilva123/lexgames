@@ -5,16 +5,19 @@ import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
 import ProtectedRoutes from "./components/ProtectedRoutes";
 import Favorites from "./pages/Favorites";
+import PublicLoginRoutes from "./components/PublicLoginRoutes";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route element={<PublicLoginRoutes />}>
+        <Route index element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>   
 
-      <Route path="/" element={<ProtectedRoutes />}>
-        <Route path="dashboard" element={<UserDashboard />} />
-        <Route path="favorites" element={<Favorites />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/dashboard" element={<UserDashboard />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );

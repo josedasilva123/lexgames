@@ -21,8 +21,10 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
   const [favoriteList, setFavoriteList] = useState([] as iGame[]);
   const [currentRoute, setCurrentRoute] = useState<string | null>(null);
 
-  const navigate = useNavigate();
-  
+  const navigate = useNavigate(); 
+
+
+
   useEffect(() => {
     (async () => {
       const token = localStorage.getItem("@TOKEN"); 
@@ -37,7 +39,6 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
 
           setUser(response.data.user);
           setFavoriteList(response.data.user.favoriteGames);
-          navigate(currentRoute ? currentRoute : "/dashboard");
         } catch (error) {
           localStorage.removeItem("@TOKEN");
           navigate("/");
