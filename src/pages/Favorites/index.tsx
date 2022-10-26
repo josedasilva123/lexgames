@@ -1,6 +1,6 @@
 import React from 'react'
 import FavoriteList from '../../components/FavoriteList'
-import Header from '../../components/Header'
+import Header from '../../components/PageComponents/Header'
 import { StyledContainer } from '../../styles/global'
 import { StyledTitle } from '../../styles/typography'
 

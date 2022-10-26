@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
-import { iGame } from "../../../contexts/@types/types";
-import { StyledButton } from "../../../styles/button";
+import { GamesContext } from "../../../../contexts/GamesContext/GamesContext";
+import { iGame } from "../../../../contexts/@types/types";
+import { StyledButton } from "../../../../styles/button";
 import { StyledGameCard } from "./style";
 
 interface iGameCardProps{

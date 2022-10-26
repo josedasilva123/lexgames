@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import Header from "../../components/Header";
+import Header from "../../components/PageComponents/Header";
 import FavoriteList from "../../components/FavoriteList";
-import GameList from "../../components/GameList";
+import GameList from "../../components/PageComponents/GameList";
 import { StyledContainer } from "../../styles/global";
 import { CatalogContext } from "../../contexts/CatalogContext/CatalogContext";
 

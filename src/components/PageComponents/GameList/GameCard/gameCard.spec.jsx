@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import GameCard from "."
-import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
+import { GamesContext } from "../../../../contexts/GamesContext/GamesContext";
 
 const mockGame = {
     thumbnail: "",

@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
-import { UserContext } from "../../contexts/UserContext";
-import { StyledButton } from "../../styles/button";
-import { StyledContainer } from "../../styles/global";
-import { StyledParagraph, StyledTitle } from "../../styles/typography";
+import { UserContext } from "../../../contexts/UserContext";
+import { StyledButton } from "../../../styles/button";
+import { StyledContainer } from "../../../styles/global";
+import { StyledParagraph, StyledTitle } from "../../../styles/typography";
 import { StyledHeader } from "./style";
 
 const Header = () => {
