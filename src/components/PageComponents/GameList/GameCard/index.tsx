@@ -10,6 +10,7 @@ interface iGameCardProps{
 
 const GameCard = ({ game }: iGameCardProps) => {
   const { addGame } = useContext(GamesContext);
+  
   return (
     <StyledGameCard>
       <div className="content">

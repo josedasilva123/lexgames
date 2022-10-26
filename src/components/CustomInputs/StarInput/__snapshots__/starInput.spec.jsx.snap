@@ -2,7 +2,9 @@
 
 exports[`<StarInput /> should match with snapshot 1`] = `
 <div>
-  <div>
+  <fieldset
+    class="sc-bczRLJ hIMjyt"
+  >
     <span
       role="listitem"
     >
@@ -133,6 +135,6 @@ exports[`<StarInput /> should match with snapshot 1`] = `
         />
       </svg>
     </span>
-  </div>
+  </fieldset>
 </div>
 `;

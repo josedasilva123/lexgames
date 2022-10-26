@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import GameList from ".";
+import { CatalogContext } from "../../../contexts/CatalogContext/CatalogContext";
 
 const mockGameList = [
   {
@@ -62,16 +63,24 @@ const mockGameList = [
 
 describe("<GameList />", () => {
   it("should render with 4 game cards", () => {
-    render(<GameList gameList={mockGameList} />);
-    
+    render(
+      <CatalogContext.Provider value={{ gameList: mockGameList}}>
+        <GameList />
+      </CatalogContext.Provider>
+    );
+
     const itens = screen.getAllByRole("listitem");
 
     expect(itens).toHaveLength(4);
   });
 
   it("should match with snapshot", () => {
-    const { container } = render(<GameList gameList={mockGameList} />);
+    const { container } = render(
+      <CatalogContext.Provider value={{ gameList: mockGameList}}>
+        <GameList />
+      </CatalogContext.Provider>
+    );
 
     expect(container).toMatchSnapshot();
-  })
+  });
 });

@@ -1,51 +1,72 @@
-import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import GameFilters from "."
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
+import GameFilters from ".";
+import { CatalogContext } from "../../../../contexts/CatalogContext/CatalogContext";
+import { GamesContext } from "../../../../contexts/GamesContext/GamesContext";
 
-const mockCategories = ["RPG", "MMORPG", "Shooter"]
+const mockCategories = ["RPG", "MMORPG", "Shooter"];
 
 describe("<GameFilters />", () => {
-    it("should render with filters options and no selected filter", () => {
-        render(
-            <GameFilters categories={mockCategories} filter="" />
-        )
+  it("should render with filters options and no selected filter", () => {
+    render(
+      <CatalogContext.Provider value={{ newCategories: mockCategories }}>
+        <GamesContext.Provider value={{ filter: "" }}>
+          <GameFilters />
+        </GamesContext.Provider>
+      </CatalogContext.Provider>
+    );
 
-        const filters = screen.getAllByRole("button");
-        const allButton = screen.getByText("Todos");
+    const filters = screen.getAllByRole("button");
+    const allButton = screen.getByText("Todos");
 
-        expect(filters).toHaveLength(4);
-        expect(allButton).toHaveClass("sc-bczRLJ hoyupM");        
-    })
+    expect(filters).toHaveLength(4);
+    expect(allButton).toHaveClass("sc-bczRLJ hoyupM");
+  });
 
-    it("should render filters options with Shooter selected", () => {
-        render(
-            <GameFilters categories={mockCategories} filter="Shooter" />   
-        )
+  it("should render filters options with Shooter selected", () => {
+    render(
+        <CatalogContext.Provider value={{ newCategories: mockCategories }}>
+          <GamesContext.Provider
+            value={{ filter: "Shooter" }}
+          >
+            <GameFilters />
+          </GamesContext.Provider>
+        </CatalogContext.Provider>
+    );
 
-        const shooterButton = screen.getByText("Shooter");
-        expect(shooterButton).toHaveClass("sc-bczRLJ hoyupM");    
-    })
+    const shooterButton = screen.getByText("Shooter");
+    expect(shooterButton).toHaveClass("sc-bczRLJ hoyupM");
+  });
 
-    it("should fire a setState action when button event is fired", async () => {
-        const setFilterMock = jest.fn();
+  it("should fire a setState action when button event is fired", async () => {
+    const setFilterMock = jest.fn();
 
-        render(
-            <GameFilters categories={mockCategories} filter="Shooter" setFilter={setFilterMock} />   
-        )      
+    render(
+      <CatalogContext.Provider value={{ newCategories: mockCategories }}>
+        <GamesContext.Provider
+          value={{ filter: "Shooter", setFilter: setFilterMock }}
+        >
+          <GameFilters />
+        </GamesContext.Provider>
+      </CatalogContext.Provider>
+    );
 
-        const allButton = screen.getByText("Todos");
-        fireEvent.click(allButton);
-  
+    const allButton = screen.getByText("Todos");
+    fireEvent.click(allButton);
 
-        await waitFor(() => {
-            expect(setFilterMock).toHaveBeenCalledTimes(1);
-        })
-    })
+    await waitFor(() => {
+      expect(setFilterMock).toHaveBeenCalledTimes(1);
+    });
+  });
 
-    it("should match with snapshot", () => {
-        const { container } = render(
-            <GameFilters categories={mockCategories} filter="" />
-        )
+  it("should match with snapshot", () => {
+    const { container } = render(
+      <CatalogContext.Provider value={{ newCategories: mockCategories }}>
+        <GamesContext.Provider value={{ filter: "" }}>
+          <GameFilters />
+        </GamesContext.Provider>
+      </CatalogContext.Provider>
+    );
 
-        expect(container).toMatchSnapshot();
-    })
-})
+    expect(container).toMatchSnapshot();
+  });
+});

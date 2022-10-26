@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
 import FavoriteList from ".";
+import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
 
 const mockGameList = [
   {
@@ -60,12 +61,13 @@ const mockGameList = [
   },
 ];
 
-const mockCategories = ["RPG", "MMORPG", "Shooter"];
-
 describe("<FavoriteList />", () => {
   it("should render favorite games", async () => {
     render(
-      <FavoriteList gameList={mockGameList} categories={mockCategories} />
+      
+      <GamesContext.Provider value={{ newFavoriteList: mockGameList }}>
+           <FavoriteList gameList={mockGameList} />
+      </GamesContext.Provider>   
     );
 
     const games = screen.getAllByRole("listitem");
