@@ -11,6 +11,15 @@ export const StyledFavoriteCard = styled.li`
     border: 1px solid var(--color-lightblue);
     border-radius: 4px;
 
+    .favoriteRating{
+        display: flex;
+        align-items: center;
+        gap: .6rem;
+        p{
+            font-weight: 600;
+        }
+    }
+
     @media (max-width: 450px){
         align-items: flex-start;
         flex-direction: column;

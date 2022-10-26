@@ -27,6 +27,10 @@ export const GlobalStyle = createGlobalStyle`
         border: none;
     } 
 
+    fieldset{
+      border: none;
+    }
+
     a{
       text-decoration: none;
     }
