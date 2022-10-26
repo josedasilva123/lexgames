@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
-import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
-import { iGame } from "../../../contexts/@types/types";
-import { StyledButton } from "../../../styles/button";
-import { StyledParagraph, StyledTitle } from "../../../styles/typography";
-import StarInput from "../../CustomInputs/StarInput";
+import { iGame } from "../../../../contexts/@types/types";
+import { GamesContext } from "../../../../contexts/GamesContext/GamesContext";
+import { StyledButton } from "../../../../styles/button";
+import { StyledParagraph, StyledTitle } from "../../../../styles/typography";
+import StarInput from "../../../CustomInputs/StarInput";
 import { StyledFavoriteCard } from "./style";
 
 interface iFavoriteCardProps {

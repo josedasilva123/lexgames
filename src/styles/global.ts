@@ -83,10 +83,4 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
         `;
     }
   }}
-
-  .mainContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
 `;

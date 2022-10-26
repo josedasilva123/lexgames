@@ -1,5 +1,5 @@
 import React from 'react'
-import FavoriteList from '../../components/FavoriteList'
+import FavoriteList from '../../components/PageComponents/FavoriteList'
 import Header from '../../components/PageComponents/Header'
 import { StyledContainer } from '../../styles/global'
 import { StyledTitle } from '../../styles/typography'
