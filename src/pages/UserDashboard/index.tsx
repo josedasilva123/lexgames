@@ -17,12 +17,12 @@ const UserDashboard = () => {
         <>
           <Header />
           <StyledContainer containerSize="large">
-            <div className="mainContainer">
+            <main className="mainContainer">
               <StyledTitle tag="h1" fontSize="one">
                 Adicione jogos a lista de favoritos
               </StyledTitle>
               <GameList />
-            </div>
+            </main>
           </StyledContainer>
         </>
       )}
