@@ -1,13 +1,11 @@
-import React from "react";
-import { iGame } from "../../contexts/types/types";
+import React, { useContext } from "react";
+import { CatalogContext } from "../../contexts/CatalogContext/CatalogContext";
 import GameCard from "./GameCard";
 import { StyledGameList } from "./style";
 
-interface iGameListProps{
-  gameList: iGame[];
-}
+const GameList = () => {
+  const { gameList } = useContext(CatalogContext);
 
-const GameList = ({ gameList }: iGameListProps) => {
   return (
     <StyledGameList>
       {gameList.map((game) => (

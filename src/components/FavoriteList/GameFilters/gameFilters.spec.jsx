@@ -1,5 +1,4 @@
 import { fireEvent, render, screen, waitFor } from "@testing-library/react"
-import React from "react"
 import GameFilters from "."
 
 const mockCategories = ["RPG", "MMORPG", "Shooter"]
@@ -14,7 +13,7 @@ describe("<GameFilters />", () => {
         const allButton = screen.getByText("Todos");
 
         expect(filters).toHaveLength(4);
-        expect(allButton).toHaveClass("sc-bczRLJ cTyziY");        
+        expect(allButton).toHaveClass("sc-bczRLJ hoyupM");        
     })
 
     it("should render filters options with Shooter selected", () => {
@@ -23,7 +22,7 @@ describe("<GameFilters />", () => {
         )
 
         const shooterButton = screen.getByText("Shooter");
-        expect(shooterButton).toHaveClass("sc-bczRLJ cTyziY");    
+        expect(shooterButton).toHaveClass("sc-bczRLJ hoyupM");    
     })
 
     it("should fire a setState action when button event is fired", async () => {

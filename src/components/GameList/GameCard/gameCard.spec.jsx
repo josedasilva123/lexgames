@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import GameCard from "."
+import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
 
 const mockGame = {
     thumbnail: "",
@@ -12,7 +13,9 @@ const addGame = jest.fn();
 describe("<GameCard />", () => {
     it("should render", () => {
         render(
-            <GameCard game={mockGame} addGame={addGame} />            
+            <GamesContext.Provider value={{ addGame }}>
+                <GameCard game={mockGame} />    
+            </GamesContext.Provider>                    
         )
 
         const thumb = screen.getByRole("img");

@@ -1,28 +1,18 @@
-import React from "react";
-import { iGame } from "../../contexts/types/types";
-import { StyledTitle } from "../../styles/typography";
+import React, { useContext } from "react";
+import { GamesContext } from "../../contexts/GamesContext/GamesContext";
 import FavoriteCard from "./FavoriteCard";
 import GameFilters from "./GameFilters";
+import { StyledTitle } from "../../styles/typography";
 import { StyledFavoriteList, StyledGrid } from "./style";
 
-interface iFavoriteListProps{
-  gameList: iGame[];
-  categories: string[];
-  filter: string;
-  setFilter: React.Dispatch<React.SetStateAction<string>>;
-}
-
-const FavoriteList = ({ gameList, categories, filter, setFilter }: iFavoriteListProps) => {
+const FavoriteList = () => {
+  const { newFavoriteList } = useContext(GamesContext);
   return (
     <StyledGrid>
-      <GameFilters
-        categories={categories}
-        filter={filter}
-        setFilter={setFilter}
-      />
-      {gameList.length ? (
+      <GameFilters />
+      {newFavoriteList.length ? (
         <StyledFavoriteList>
-          {gameList.map((game, index) => (
+          {newFavoriteList.map((game, index) => (
             <FavoriteCard key={index} game={game} />
           ))}
         </StyledFavoriteList>

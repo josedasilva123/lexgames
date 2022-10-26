@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-import { createContext, useContext } from "react";
+import { createContext, useContext, useState } from "react";
 import { coreApi } from "../../services/api";
 import { UserContext } from "../UserContext";
 import { toast } from "react-toastify";
@@ -11,7 +11,12 @@ export const GamesContext = createContext({} as iGamesContext);
 
 export const GamesProvider = ({ children }: iDefaultContextProps) => {
   const { favoriteList, setFavoriteList } = useContext(UserContext);
+  const [filter, setFilter] = useState("");
 
+  const newFavoriteList = favoriteList.filter((game) =>
+    filter === "" ? true : game.genre === filter
+  );
+  
   const addGame = async (gameData: iGame) => {
     if (!favoriteList.find((game) => game.id === gameData.id)) {
       try {
@@ -43,7 +48,7 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
         toast.success("Jogo adicionado com sucesso!");
         setFavoriteList(newData); /* Estado */
       } catch (error) {
-        const requestError = error as AxiosError<iApiError>
+        const requestError = error as AxiosError<iApiError>;
         toast.error(requestError.response?.data.error);
       }
     } else {
@@ -54,7 +59,9 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
   const removeGame = async (clickedGame: iGame) => {
     if (confirm("Deseja excluir mesmo este item?")) {
       try {
-        const newGameList = favoriteList.filter((game) => game.id !== clickedGame.id);
+        const newGameList = favoriteList.filter(
+          (game) => game.id !== clickedGame.id
+        );
         const token = localStorage.getItem("@TOKEN");
 
         await coreApi.patch(
@@ -72,7 +79,7 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
         toast.success("Jogo removido com sucesso!");
         setFavoriteList(newGameList);
       } catch (error) {
-        const requestError = error as AxiosError<iApiError>
+        const requestError = error as AxiosError<iApiError>;
         toast.error(requestError.response?.data.error);
       }
     }
@@ -85,7 +92,7 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
   const ratingGame = async (gameId: number, rating: number) => {
     try {
       const token = localStorage.getItem("@TOKEN");
-      
+
       const newFavoriteList = favoriteList.map((game) => {
         if (game.id === gameId) {
           return { ...game, rating: rating };
@@ -106,17 +113,19 @@ export const GamesProvider = ({ children }: iDefaultContextProps) => {
         }
       );
 
-      toast.success("Avaliação realizada com sucesso!")
+      toast.success("Avaliação realizada com sucesso!");
       setFavoriteList(newFavoriteList);
     } catch (error) {
-      const requestError = error as AxiosError<iApiError>
+      const requestError = error as AxiosError<iApiError>;
       toast.error(requestError.response?.data.error);
-    }   
+    }
   };
 
   return (
-    <GamesContext.Provider value={{ addGame, removeGame, ratingGame }}>
+    <GamesContext.Provider value={{ addGame, removeGame, ratingGame, filter, setFilter, newFavoriteList }}>
       {children}
     </GamesContext.Provider>
   );
 };
+
+
