@@ -1,7 +1,7 @@
 /* eslint-disable testing-library/await-async-query */
 import { screen, render, fireEvent, waitFor } from "@testing-library/react";
 import FavoriteCard from ".";
-import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
+import { GamesContext } from "../../../../contexts/GamesContext/GamesContext";
 
 const mockGame = {
   id: 1,

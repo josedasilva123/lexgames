@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import FavoriteList from ".";
+import GameList from ".";
+import { CatalogContext } from "../../../contexts/CatalogContext/CatalogContext";
 
 const mockGameList = [
   {
@@ -60,20 +61,26 @@ const mockGameList = [
   },
 ];
 
-const mockCategories = ["RPG", "MMORPG", "Shooter"];
-
-describe("<FavoriteList />", () => {
-  it("should render favorite games", async () => {
+describe("<GameList />", () => {
+  it("should render with 4 game cards", () => {
     render(
-      <FavoriteList gameList={mockGameList} categories={mockCategories} />
+      <CatalogContext.Provider value={{ gameList: mockGameList}}>
+        <GameList />
+      </CatalogContext.Provider>
     );
 
-    const games = screen.getAllByRole("listitem");
+    const itens = screen.getAllByRole("listitem");
 
-    expect(games).toHaveLength(24);
+    expect(itens).toHaveLength(4);
   });
 
   it("should match with snapshot", () => {
-    
-  })
+    const { container } = render(
+      <CatalogContext.Provider value={{ gameList: mockGameList}}>
+        <GameList />
+      </CatalogContext.Provider>
+    );
+
+    expect(container).toMatchSnapshot();
+  });
 });

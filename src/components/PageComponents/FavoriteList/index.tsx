@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
-import { GamesContext } from "../../contexts/GamesContext/GamesContext";
+import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
+import { StyledTitle } from "../../../styles/typography";
 import FavoriteCard from "./FavoriteCard";
 import GameFilters from "./GameFilters";
-import { StyledTitle } from "../../styles/typography";
 import { StyledFavoriteList, StyledGrid } from "./style";
 
 const FavoriteList = () => {
   const { newFavoriteList } = useContext(GamesContext);
+  
   return (
     <StyledGrid>
       <GameFilters />

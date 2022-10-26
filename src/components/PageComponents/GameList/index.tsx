@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { CatalogContext } from "../../contexts/CatalogContext/CatalogContext";
+import { CatalogContext } from "../../../contexts/CatalogContext/CatalogContext";
 import GameCard from "./GameCard";
 import { StyledGameList } from "./style";
 

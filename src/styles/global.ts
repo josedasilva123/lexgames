@@ -32,6 +32,7 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     a{
+      color: unset;
       text-decoration: none;
     }
 
@@ -47,7 +48,7 @@ export const GlobalStyle = createGlobalStyle`
         background: var(--color-darkblue);
     }
 
-    h1, h2, h3, h4, h5, h6, p, span, li{
+    h1, h2, h3, h4, h5, h6, p, span, li, a{
       font-family: 'Roboto', sans-serif;
       color: var(--color-white);
     }
@@ -83,10 +84,4 @@ export const StyledContainer = styled.div<iStyledContainerProps>`
         `;
     }
   }}
-
-  .mainContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 4rem;
-  }
 `;

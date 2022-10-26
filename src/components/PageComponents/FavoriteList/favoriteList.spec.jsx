@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react";
-import GameList from ".";
+import FavoriteList from ".";
+import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
 
 const mockGameList = [
   {
@@ -60,18 +61,21 @@ const mockGameList = [
   },
 ];
 
-describe("<GameList />", () => {
-  it("should render with 4 game cards", () => {
-    render(<GameList gameList={mockGameList} />);
-    
-    const itens = screen.getAllByRole("listitem");
+describe("<FavoriteList />", () => {
+  it("should render favorite games", async () => {
+    render(
+      
+      <GamesContext.Provider value={{ newFavoriteList: mockGameList }}>
+           <FavoriteList gameList={mockGameList} />
+      </GamesContext.Provider>   
+    );
 
-    expect(itens).toHaveLength(4);
+    const games = screen.getAllByRole("listitem");
+
+    expect(games).toHaveLength(24);
   });
 
   it("should match with snapshot", () => {
-    const { container } = render(<GameList gameList={mockGameList} />);
-
-    expect(container).toMatchSnapshot();
+    
   })
 });

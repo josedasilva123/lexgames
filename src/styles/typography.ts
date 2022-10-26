@@ -1,4 +1,5 @@
 /* eslint-disable default-case */
+import { Link  } from "react-router-dom";
 import styled, { css, keyframes } from "styled-components";
 import { BaseTitle } from "./components/typography";
 
@@ -61,4 +62,15 @@ export const StyledParagraph = styled.p<iStyledParagraphProps>`
     font-weight: 400;
     font-size: 16px;
     color: ${({error}) => error ? "var(--color-red)" : "var(--color-white)"};
+`
+
+export const StyledLink = styled(Link)`
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--color-white);
+    transition: .3s;
+
+    &:hover{
+        color: var(--color-lightblue);
+    }
 `

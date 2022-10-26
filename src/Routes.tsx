@@ -3,16 +3,21 @@ import { Route, Routes } from "react-router-dom";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import UserDashboard from "./pages/UserDashboard";
-import ProtectedRoutes from "./components/ProtectedRoutes";
+import ProtectedRoutes from "./components/RouteProtection/ProtectedRoutes";
+import Favorites from "./pages/Favorites";
+import PublicLoginRoutes from "./components/RouteProtection/PublicLoginRoutes";
 
 const AppRoutes = () => {
   return (
     <Routes>
-      <Route index element={<Login />} />
-      <Route path="/register" element={<Register />} />
+      <Route element={<PublicLoginRoutes />}>
+        <Route index element={<Login />} />
+        <Route path="/register" element={<Register />} />
+      </Route>   
 
-      <Route path="/dashboard" element={<ProtectedRoutes />}>
-        <Route index element={<UserDashboard />} />
+      <Route element={<ProtectedRoutes />}>
+        <Route path="/dashboard" element={<UserDashboard />} />
+        <Route path="/favorites" element={<Favorites />} />
       </Route>
     </Routes>
   );

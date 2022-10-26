@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
-import { CatalogContext } from "../../../contexts/CatalogContext/CatalogContext";
-import { GamesContext } from "../../../contexts/GamesContext/GamesContext";
-import { StyledButton } from "../../../styles/button";
+import { CatalogContext } from "../../../../contexts/CatalogContext/CatalogContext";
+import { GamesContext } from "../../../../contexts/GamesContext/GamesContext";
+import { StyledButton } from "../../../../styles/button";
 import { StyledGameFilters } from "./style";
 
 const GameFilters = () => {
