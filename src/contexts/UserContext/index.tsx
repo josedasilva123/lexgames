@@ -62,7 +62,6 @@ export const UserProvider = ({ children }: iDefaultContextProps) => {
       setFavoriteList(response.data.user.favoriteGames);
 
       localStorage.setItem("@TOKEN", response.data.token); 
-      navigate("/dashboard");
       if (callback) {
         callback(response.data);
       }
