@@ -18,7 +18,6 @@ export const CatalogProvider = ({children}: iDefaultContextProps) => {
         try {
           setLoading(true);
           const response = await externalApi.get("games");
-          response.data.length = 24;
           setGameList(response.data);
         } catch (error) {
           console.log(error);
