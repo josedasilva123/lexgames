@@ -5,21 +5,25 @@ import GameCard from "./GameCard";
 import { StyledGameList } from "./style";
 
 const GameList = () => {
-  const { gameList } = useContext(CatalogContext);
-  const intersectionElement = useIntersectionObserver((entries) => {
+  const { gameList, renderGameList, renderCount, setRenderCount } = useContext(CatalogContext);
+  const observer = useIntersectionObserver<HTMLDivElement>((entries) => {
     if (entries.some((entry) => entry.isIntersecting)) {
-      console.log("Elemento está visível");
+      const newRenderCount = renderCount + 24;
+
+      if(newRenderCount < gameList.length){
+        setRenderCount(newRenderCount);
+      }
     }
   });
 
   return (
     <>
       <StyledGameList>
-        {gameList.map((game) => (
+        {renderGameList.map((game) => (
           <GameCard key={game.id} game={game} />
         ))}
       </StyledGameList>
-      <div ref={intersectionElement}></div>
+      <div ref={observer}></div>
     </>
   );
 };
