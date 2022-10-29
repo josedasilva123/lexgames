@@ -13,7 +13,7 @@ export const useIntersectionObserver = <Element extends globalThis.Element>(call
         return () => {
             intersectionObserver.disconnect();
         };
-    })
+    }, [])
 
     return observingElement
     
