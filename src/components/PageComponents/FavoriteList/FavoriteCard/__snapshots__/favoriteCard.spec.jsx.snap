@@ -3,7 +3,7 @@
 exports[`<FavoriteCard /> should match with snapshot 1`] = `
 <div>
   <li
-    class="sc-jSMfEi dVVfla"
+    class="sc-gKXOVf dlcKCP"
   >
     <div>
       <div
@@ -15,7 +15,7 @@ exports[`<FavoriteCard /> should match with snapshot 1`] = `
           5
         </p>
         <fieldset
-          class="sc-eCYdqJ jCJrSm"
+          class="sc-jSMfEi bzfCno"
         >
           <span
             role="listitem"

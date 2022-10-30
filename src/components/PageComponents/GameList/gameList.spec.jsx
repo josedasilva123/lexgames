@@ -63,8 +63,20 @@ const mockGameList = [
 
 describe("<GameList />", () => {
   it("should render with 4 game cards", () => {
+    const observe = jest.fn();
+    const unobserve = jest.fn();
+    const disconnect = jest.fn();
+
+    window.IntersectionObserver = jest.fn(() => ({
+      observe,
+      unobserve,
+      disconnect,
+    }));
+
     render(
-      <CatalogContext.Provider value={{ gameList: mockGameList}}>
+      <CatalogContext.Provider
+        value={{ gameList: mockGameList, renderGameList: mockGameList }}
+      >
         <GameList />
       </CatalogContext.Provider>
     );
@@ -75,8 +87,20 @@ describe("<GameList />", () => {
   });
 
   it("should match with snapshot", () => {
+    const observe = jest.fn();
+    const unobserve = jest.fn();
+    const disconnect = jest.fn();
+
+    window.IntersectionObserver = jest.fn(() => ({
+      observe,
+      unobserve,
+      disconnect,
+    }));
+    
     const { container } = render(
-      <CatalogContext.Provider value={{ gameList: mockGameList}}>
+      <CatalogContext.Provider
+        value={{ gameList: mockGameList, renderGameList: mockGameList }}
+      >
         <GameList />
       </CatalogContext.Provider>
     );
