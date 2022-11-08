@@ -2,18 +2,19 @@ import styled from "styled-components";
 
 export const StyledGameList = styled.ul`
     width: 100%;
-    display: flex;
+    display: grid;
     flex-wrap: wrap;
+    grid-template-columns: repeat(3, 1fr);
     gap: 2rem;
-    
-    li{
-        width: calc((100% - 4rem)/3);
+
+    @media (max-width: 1024px){
+        grid-template-columns: repeat(2, 1fr);   
     }
 
-    @media (max-width: 1020px){
-        li{
-            width: 100%;
-        }
+    @media (max-width: 550px){
+        grid-template-columns: 1fr;
     }
+    
+
 
 `
