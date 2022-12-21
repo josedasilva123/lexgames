@@ -15,8 +15,7 @@ const Favorites = () => {
                 <FavoriteList />
             </main>
          </StyledContainer>
-    </StyledFavorites>
-   
+    </StyledFavorites>   
   )
 }
 

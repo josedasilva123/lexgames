@@ -1,3 +1,13 @@
+export const mapGameData = () => gameData;
+export const mapUserData = () => userData;
+
+export const userData = {
+  id: "123",
+  name: "Alex Conder",
+  email: "alex321@emailfeliz.com",
+  favoriteGames: [],
+};
+
 export const gameData = [
   {
     id: 521,
