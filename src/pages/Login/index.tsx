@@ -17,7 +17,8 @@ export interface iLoginFormData{
 
 const Login = () => {
   const { userLogin } = useContext(UserContext);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(false); // quando cada loading em um loading diferente
+
   const {
     register,
     handleSubmit,
@@ -25,8 +26,7 @@ const Login = () => {
     reset,
   } = useForm<iLoginFormData>({
     resolver: yupResolver(loginSchema),
-  });
-  
+  });  // quando formulário é um formulário é diferente
 
   const submit: SubmitHandler<iLoginFormData> = (data) => {
     userLogin(data, setLoading, () => {
